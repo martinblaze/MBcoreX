@@ -1,7 +1,9 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import { MapPin } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
+import { BackgroundHero } from "@/components/layout/background-hero"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Heading, Text, Caption } from "@/components/typography/typography"
 import { Reveal } from "@/components/motion/reveal"
@@ -36,7 +38,19 @@ export default function ContactPage() {
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
       </Section>
 
-      <Section spacing="tight">
+      <BackgroundHero
+        background={
+          <Image
+            src="/images/Let'sBuildSomethingExceptional.png"
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        }
+      >
         <Reveal>
           <Caption className="text-primary">Contact</Caption>
           <Heading level={1} size="xl" className="mt-4 max-w-2xl">
@@ -46,7 +60,7 @@ export default function ContactPage() {
             Have a project in mind or need advice? We&apos;d love to hear from you.
           </Text>
         </Reveal>
-      </Section>
+      </BackgroundHero>
 
       <ContactSection
         heading="Send Us a Message"

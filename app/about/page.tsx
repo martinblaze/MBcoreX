@@ -158,14 +158,28 @@ export default function AboutPage() {
         </Grid>
       </Section>
 
-      <Section>
+      <BackgroundHero
+        scrim="light"
+        background={
+          <Image
+            src="/images/OurJourney.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-[62%_center]"
+          />
+        }
+      >
         <Reveal>
-          <div className="mx-auto mb-12 max-w-2xl text-center">
+          <div className="mx-auto max-w-2xl text-center">
             <Heading level={2} size="xl">
               Our Journey
             </Heading>
           </div>
         </Reveal>
+      </BackgroundHero>
+
+      <Section>
         <Timeline entries={timeline} />
       </Section>
 

@@ -1,8 +1,10 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { Check, FileText } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
+import { BackgroundHero } from "@/components/layout/background-hero"
 import { Grid } from "@/components/layout/grid"
 import { Divider } from "@/components/layout/divider"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
@@ -47,7 +49,20 @@ export default function ServicesPage() {
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
       </Section>
 
-      <Section spacing="tight">
+      <BackgroundHero
+        scrim="light"
+        background={
+          <Image
+            src="/images/Solutions.jpg"
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            className="object-cover object-[62%_center]"
+          />
+        }
+      >
         <Reveal>
           <Caption className="text-primary">Our Services</Caption>
           <Heading level={1} size="xl" className="mt-4 max-w-2xl">
@@ -58,7 +73,7 @@ export default function ServicesPage() {
             presence — organized below by discipline.
           </Text>
         </Reveal>
-      </Section>
+      </BackgroundHero>
 
       {serviceCategories.map((category, categoryIndex) => {
         const categoryServices = getServicesByCategory(category)

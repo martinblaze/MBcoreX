@@ -140,9 +140,20 @@ export default function CybersecurityPage() {
         </div>
       </Section>
 
-      <Section>
+      <BackgroundHero
+        scrim="light"
+        background={
+          <Image
+            src="/images/SecureDevelopmentLifecycle.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-[62%_center]"
+          />
+        }
+      >
         <Reveal>
-          <div className="mx-auto mb-10 max-w-2xl text-center">
+          <div className="mx-auto max-w-2xl text-center">
             <Heading level={2} size="xl">
               Secure Development Lifecycle
             </Heading>
@@ -151,6 +162,9 @@ export default function CybersecurityPage() {
             </Text>
           </div>
         </Reveal>
+      </BackgroundHero>
+
+      <Section>
         <ProcessTimeline entries={sdlcPhases} />
       </Section>
 

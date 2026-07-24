@@ -4,6 +4,7 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
+import { BackgroundHero } from "@/components/layout/background-hero"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Heading, Text, Caption } from "@/components/typography/typography"
 import { Badge } from "@/components/ui/badge"
@@ -41,7 +42,19 @@ export default async function InsightsPage({ searchParams }: Props) {
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Insights" }]} />
       </Section>
 
-      <Section spacing="tight">
+      <BackgroundHero
+        background={
+          <Image
+            src="/images/Engineering&SecurityInsights.png"
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        }
+      >
         <Reveal>
           <Caption className="text-primary">Insights</Caption>
           <Heading level={1} size="xl" className="mt-4 max-w-2xl">
@@ -52,7 +65,7 @@ export default async function InsightsPage({ searchParams }: Props) {
             technology — written by the people building the software.
           </Text>
         </Reveal>
-      </Section>
+      </BackgroundHero>
 
       <Section spacing="tight">
         <Reveal>
