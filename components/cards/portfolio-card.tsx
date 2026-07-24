@@ -26,14 +26,14 @@ export function PortfolioCard({ title, category, description, image, logo, href,
   return (
     <motion.div {...cardHover} className={cn("group h-full", className)}>
       <Link href={href} className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card">
-        <div className="relative aspect-[4/3] overflow-hidden bg-surface-elevated">
+        <div className="relative aspect-[16/10] overflow-hidden bg-surface-elevated">
           {logo ? (
             <Image
               src={logo}
               alt={`${title} logo`}
               fill
               sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              className="object-contain p-10 transition-transform duration-300 ease-out group-hover:scale-[1.04] sm:p-12"
+              className="object-contain p-8 transition-transform duration-300 ease-out group-hover:scale-[1.04] sm:p-10"
             />
           ) : (
             <Image
