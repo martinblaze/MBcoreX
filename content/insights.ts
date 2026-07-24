@@ -51,7 +51,7 @@ export const blogPosts: BlogPost[] = [
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-06-02",
-    image: "/images/Background1.png",
+    image: "/images/artificialintelligence.png",
     featured: true,
     body: [
       {
@@ -97,7 +97,7 @@ export const blogPosts: BlogPost[] = [
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-05-18",
-    image: "/images/Background2.png",
+    image: "/images/Software Engineering.png",
     body: [
       {
         type: "paragraph",
@@ -150,7 +150,7 @@ export async function submitContactForm(input: unknown) {
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-04-27",
-    image: "/images/Background3.png",
+    image: "/images/Cybersecurity.png",
     body: [
       {
         type: "paragraph",
@@ -205,7 +205,7 @@ export function middleware(request: Request) {
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-04-09",
-    image: "/images/Background1.png",
+    image: "/images/Cloud.png",
     body: [
       {
         type: "paragraph",
@@ -242,7 +242,7 @@ export function middleware(request: Request) {
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-03-21",
-    image: "/images/Background2.png",
+    image: "/images/DevOps.png",
     body: [
       {
         type: "paragraph",
@@ -297,7 +297,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-03-05",
-    image: "/images/Background3.png",
+    image: "/images/UIUX.png",
     body: [
       {
         type: "paragraph",
@@ -337,7 +337,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-02-14",
-    image: "/images/Background1.png",
+    image: "/images/Case Studies.png",
     body: [
       {
         type: "paragraph",
@@ -377,7 +377,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-01-22",
-    image: "/images/Background2.png",
+    image: "/images/BusinessTechnology.png",
     body: [
       {
         type: "paragraph",

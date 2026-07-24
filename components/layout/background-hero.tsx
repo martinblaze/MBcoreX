@@ -14,9 +14,14 @@ type BackgroundHeroProps = {
    * is bright/busy there (e.g. Home's dashboard UI). `light` only lightly
    * darkens it — for images that are already dark/black on that side, where
    * a heavy scrim would just mute the image's own color (e.g. Cybersecurity's
-   * glowing shield on a black field).
+   * glowing shield on a black field). Both `default` and `light` fade to
+   * fully clear a quarter of the way down, which is fine for a short hero
+   * blurb but leaves lower content unreadable — use `full` when the content
+   * spans the whole section (e.g. a heading plus a timeline/list below it),
+   * since it holds a flat, even wash across the entire image instead of
+   * clearing up.
    */
-  scrim?: "default" | "light"
+  scrim?: "default" | "light" | "full"
   /** Which side the copy sits on (desktop only — always left-aligned below `lg`). Flips which side the horizontal scrim darkens. */
   align?: "start" | "end"
   className?: string
@@ -27,11 +32,22 @@ const scrimClasses = {
     start: "bg-gradient-to-r from-background via-background/85 to-background/10",
     end: "bg-gradient-to-l from-background via-background/85 to-background/10",
     vertical: "bg-gradient-to-t from-background via-transparent to-transparent",
+    mobile: "bg-gradient-to-b from-background from-10% via-background/75 via-45% to-transparent to-75%",
   },
   light: {
     start: "bg-gradient-to-r from-background from-5% via-background/55 via-35% to-transparent to-70%",
     end: "bg-gradient-to-l from-background from-5% via-background/55 via-35% to-transparent to-70%",
     vertical: "bg-gradient-to-t from-background/45 from-0% to-transparent to-25%",
+    mobile: "bg-gradient-to-b from-background from-10% via-background/75 via-45% to-transparent to-75%",
+  },
+  // Flat, even wash (not a gradient that clears up) so text stays legible
+  // however tall the content runs — a heading plus a full timeline, not
+  // just a short hero blurb.
+  full: {
+    start: "bg-gradient-to-r from-background from-0% via-background/82 via-50% to-background/55 to-100%",
+    end: "bg-gradient-to-l from-background from-0% via-background/82 via-50% to-background/55 to-100%",
+    vertical: "bg-background/40",
+    mobile: "bg-background/72",
   },
 } as const
 
@@ -58,9 +74,8 @@ export function BackgroundHero({
       <div className={cn("absolute inset-0 -z-10 hidden lg:block", scrimStyle[align])} />
       <div className={cn("absolute inset-0 -z-10 hidden lg:block", scrimStyle.vertical)} />
       {/* Below lg the copy stacks above the image instead of beside it, so the
-          scrim runs top-to-bottom (dark behind the text, clear by mid-image)
-          instead of reusing the desktop left/right treatment. */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background from-10% via-background/75 via-45% to-transparent to-75% lg:hidden" />
+          scrim runs top-to-bottom instead of reusing the desktop left/right treatment. */}
+      <div className={cn("absolute inset-0 -z-10 lg:hidden", scrimStyle.mobile)} />
 
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
         <div

@@ -141,7 +141,7 @@ export default function CybersecurityPage() {
       </Section>
 
       <BackgroundHero
-        scrim="light"
+        scrim="full"
         background={
           <Image
             src="/images/SecureDevelopmentLifecycle.jpg"
@@ -152,21 +152,20 @@ export default function CybersecurityPage() {
           />
         }
       >
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <Heading level={2} size="xl">
-              Secure Development Lifecycle
-            </Heading>
-            <Text tone="muted" className="mt-3">
-              Security isn&apos;t a gate at the end of the build — it&apos;s a consideration at every phase.
-            </Text>
-          </div>
-        </Reveal>
+        <div className="w-full">
+          <Reveal>
+            <div className="mx-auto mb-10 max-w-2xl text-center">
+              <Heading level={2} size="xl">
+                Secure Development Lifecycle
+              </Heading>
+              <Text tone="muted" className="mt-3">
+                Security isn&apos;t a gate at the end of the build — it&apos;s a consideration at every phase.
+              </Text>
+            </div>
+          </Reveal>
+          <ProcessTimeline entries={sdlcPhases} />
+        </div>
       </BackgroundHero>
-
-      <Section>
-        <ProcessTimeline entries={sdlcPhases} />
-      </Section>
 
       <Section>
         <Reveal>

@@ -11,7 +11,13 @@ type ImageRevealProps = {
   className?: string
 }
 
-/** Clip-path wipe used for hero device mockups and portfolio thumbnails on first view. */
+/**
+ * Clip-path wipe for hero-adjacent imagery that's essentially always in the
+ * initial viewport (article hero images, featured cards) — animates on
+ * mount rather than `whileInView`, since that content isn't something a
+ * user scrolls deep to discover, and mount-triggered animation can't get
+ * stuck the way an IntersectionObserver-gated one occasionally can.
+ */
 export function ImageReveal({ children, className }: ImageRevealProps) {
   const reducedMotion = useReducedMotion()
 
@@ -19,8 +25,7 @@ export function ImageReveal({ children, className }: ImageRevealProps) {
     <motion.div
       className={cn("overflow-hidden", className)}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      animate="visible"
       variants={reducedMotion ? fadeIn : imageReveal}
     >
       {children}

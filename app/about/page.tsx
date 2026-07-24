@@ -159,7 +159,7 @@ export default function AboutPage() {
       </Section>
 
       <BackgroundHero
-        scrim="light"
+        scrim="full"
         background={
           <Image
             src="/images/OurJourney.png"
@@ -170,18 +170,17 @@ export default function AboutPage() {
           />
         }
       >
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <Heading level={2} size="xl">
-              Our Journey
-            </Heading>
-          </div>
-        </Reveal>
+        <div className="w-full">
+          <Reveal>
+            <div className="mx-auto mb-12 max-w-2xl text-center">
+              <Heading level={2} size="xl">
+                Our Journey
+              </Heading>
+            </div>
+          </Reveal>
+          <Timeline entries={timeline} />
+        </div>
       </BackgroundHero>
-
-      <Section>
-        <Timeline entries={timeline} />
-      </Section>
 
       <Section>
         <Reveal>

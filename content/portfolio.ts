@@ -8,6 +8,8 @@ export type PortfolioProject = {
   image: string
   /** Client logo — shown on portfolio/project grid cards instead of the case-study cover photo. */
   logo: string
+  /** Real product screenshots shown in the case-study page's gallery carousel. */
+  gallery: string[]
   problem: string
   solution: string
   discoveryProcess: string
@@ -33,6 +35,12 @@ export const portfolioProjects: PortfolioProject[] = [
       "A complete lab management solution for diagnostics centers — patient records, lab workflow, medical reports, inventory and automation in one system.",
     image: "/images/Background1.png",
     logo: "/images/diagsync-logo.png",
+    gallery: [
+      "/images/diagsynclandingpage.png",
+      "/images/diagsynclandingpage2.png",
+      "/images/diagsynclandingpage3.png",
+      "/images/diagsyncdashboard.png",
+    ],
     problem:
       "Diagnostics centers were running patient records, lab workflow and reporting through manual, paper-heavy processes — slow to update, easy to misplace, and hard to audit.",
     solution:
@@ -69,6 +77,13 @@ export const portfolioProjects: PortfolioProject[] = [
       "A modern ecommerce experience connecting students to buy and sell — vendor management, secure payments and a scalable architecture built to grow with campus demand.",
     image: "/images/Background2.png",
     logo: "/images/BATAMART-LOGO.png",
+    gallery: [
+      "/images/batamartlandingpage.png",
+      "/images/batamartlandingpage2.png",
+      "/images/batamartlandingpage3.png",
+      "/images/batamartmarketplacepage.png",
+      "/images/batamartsearchpage.png",
+    ],
     problem:
       "Student buying and selling activity on campus was informal and fragmented — scattered across chats and word of mouth, with no trust layer, vendor accountability, or secure way to pay.",
     solution:
@@ -105,6 +120,12 @@ export const portfolioProjects: PortfolioProject[] = [
       "A professional, responsive corporate website for a leading diagnostic center — healthcare-appropriate branding built to earn trust from the first visit.",
     image: "/images/Background3.png",
     logo: "/images/ReeneLab-logo.png",
+    gallery: [
+      "/images/reenemedicallandingpage.png",
+      "/images/reenemedicallandingpage2.png",
+      "/images/reenemedicalservices.png",
+      "/images/reenemedicalgallery.png",
+    ],
     problem:
       "Reene Medical Diagnostics had no professional digital presence — patients and partners had no reliable way to learn about services or trust the brand online.",
     solution:

@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ShieldCheck, Sparkles, Target, Wrench } from "lucide-react"
@@ -10,11 +9,10 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Heading, Text, Caption } from "@/components/typography/typography"
 import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/motion/reveal"
-import { ImageReveal } from "@/components/motion/image-reveal"
 import { TechStackBadges } from "@/components/sections/tech-stack"
 import { CTABanner } from "@/components/sections/cta-banner"
 import { StickyMobileCta } from "@/components/sections/sticky-mobile-cta"
-import { DeviceMockup } from "@/components/sections/portfolio/device-mockup"
+import { ProjectGallery } from "@/components/sections/portfolio/project-gallery"
 import { ProcessTimeline } from "@/components/sections/timeline"
 import { TestimonialCard } from "@/components/cards/testimonial-card"
 import { JsonLd } from "@/components/seo/json-ld"
@@ -100,17 +98,19 @@ export default async function PortfolioDetailPage({ params }: Props) {
       </Section>
 
       <Section spacing="tight">
-        <ImageReveal className="relative aspect-[16/9] w-full rounded-2xl">
-          <Image
-            src={project.image}
-            alt={`${project.title} product screenshot`}
-            fill
-            priority
-            fetchPriority="high"
-            sizes="(min-width: 1024px) 1100px, 100vw"
-            className="object-cover"
-          />
-        </ImageReveal>
+        <Reveal>
+          <div className="mx-auto mb-8 max-w-2xl text-center">
+            <Heading level={2} size="lg">
+              A Closer Look
+            </Heading>
+            <Text tone="muted" className="mt-2">
+              Real screens from {project.title}, in production.
+            </Text>
+          </div>
+        </Reveal>
+        <Reveal variant="fade">
+          <ProjectGallery images={project.gallery} alt={project.title} />
+        </Reveal>
       </Section>
 
       <Section>
@@ -184,22 +184,6 @@ export default async function PortfolioDetailPage({ params }: Props) {
             Technology
           </Heading>
           <TechStackBadges items={project.stack.map((name) => ({ name }))} />
-        </Reveal>
-      </Section>
-
-      <Section>
-        <Reveal>
-          <div className="mx-auto mb-8 max-w-2xl text-center">
-            <Heading level={2} size="lg">
-              Desktop, Tablet & Mobile
-            </Heading>
-            <Text tone="muted" className="mt-2">
-              A responsive preview of how {project.title} adapts across devices.
-            </Text>
-          </div>
-        </Reveal>
-        <Reveal variant="fade">
-          <DeviceMockup image={project.image} alt={`${project.title} shown across desktop, tablet and mobile`} />
         </Reveal>
       </Section>
 
