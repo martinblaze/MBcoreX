@@ -28,6 +28,13 @@ export const metadata: Metadata = {
   },
   description:
     "MB CoreX is a software development and cybersecurity company delivering secure, scalable digital solutions for businesses ready to grow.",
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/images/MBxlogoremovebg.png", type: "image/png" },
+    ],
+    apple: "/favicon.png",
+  },
   verification: analyticsConfig.googleSiteVerification
     ? { google: analyticsConfig.googleSiteVerification }
     : undefined,
