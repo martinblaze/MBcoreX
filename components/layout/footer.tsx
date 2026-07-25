@@ -13,7 +13,7 @@ export function Footer() {
       <Container>
         <div className="grid grid-cols-1 gap-12 py-16 lg:grid-cols-[1.3fr_0.8fr_0.8fr_1.1fr] lg:gap-8">
           <div className="flex flex-col gap-4">
-            <Logo height={34} />
+            <Logo height={56} />
             <p className="max-w-sm text-body-sm text-muted-foreground">
               We build secure, innovative and scalable digital solutions that help businesses
               grow and succeed.

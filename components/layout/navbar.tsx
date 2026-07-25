@@ -29,7 +29,7 @@ export function Navbar() {
       >
         <Container>
           <div className="flex h-16 items-center justify-between">
-            <Logo height={36} priority />
+            <Logo height={56} priority />
 
             <nav aria-label="Primary" className="hidden items-center gap-0.5 xl:flex">
               {primaryNav.map((item) =>

@@ -33,7 +33,7 @@ export function MobileNav() {
       <SheetContent side="right" className="w-full sm:max-w-sm">
         <SheetHeader className="border-b border-border">
           <SheetTitle>
-            <Logo height={32} />
+            <Logo height={52} />
           </SheetTitle>
         </SheetHeader>
 
