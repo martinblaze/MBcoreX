@@ -9,6 +9,7 @@ import { NavLink } from "@/components/layout/nav-link"
 import { NavDropdown } from "@/components/layout/nav-dropdown"
 import { MobileNav } from "@/components/layout/mobile-nav"
 import { SearchDialog } from "@/components/search/search-dialog"
+import { ThemeToggle } from "@/components/layout/theme-toggle"
 import { useScrolled } from "@/hooks/use-scroll-position"
 import { cn } from "@/lib/utils"
 import { ctaCopy, primaryNav } from "@/lib/constants"
@@ -45,6 +46,7 @@ export function Navbar() {
 
             <div className="flex items-center gap-2">
               <SearchDialog />
+              <ThemeToggle />
               <Button variant="cta" size="default" className="hidden xl:inline-flex" render={<Link href="/contact" />}>
                 {ctaCopy.primary}
               </Button>

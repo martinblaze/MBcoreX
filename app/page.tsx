@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import dynamic from "next/dynamic"
 import {
@@ -19,6 +18,7 @@ import {
 
 import { Section } from "@/components/layout/section"
 import { BackgroundHero } from "@/components/layout/background-hero"
+import { ThemedImage } from "@/components/layout/themed-image"
 import { Grid } from "@/components/layout/grid"
 import { Heading, Text } from "@/components/typography/typography"
 import { Button } from "@/components/ui/button"
@@ -227,8 +227,9 @@ export default function HomePage() {
         scrim="light"
         minHeightClass="lg:min-h-[620px]"
         background={
-          <Image
-            src="/images/Background3.png"
+          <ThemedImage
+            srcLight="/images/Background3Lightmode.png"
+            srcDark="/images/Background3.png"
             alt=""
             fill
             sizes="100vw"
@@ -263,8 +264,9 @@ export default function HomePage() {
         scrim="light"
         minHeightClass="lg:min-h-[560px]"
         background={
-          <Image
-            src="/images/Background9.png"
+          <ThemedImage
+            srcLight="/images/Background9Lightmode.png"
+            srcDark="/images/Background9.png"
             alt=""
             fill
             sizes="100vw"

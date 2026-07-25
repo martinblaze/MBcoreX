@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
 import { BackgroundHero } from "@/components/layout/background-hero"
+import { ThemedImage } from "@/components/layout/themed-image"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Heading, Text, Caption } from "@/components/typography/typography"
 import { Badge } from "@/components/ui/badge"
@@ -44,8 +45,9 @@ export default async function InsightsPage({ searchParams }: Props) {
 
       <BackgroundHero
         background={
-          <Image
-            src="/images/Engineering&SecurityInsights.png"
+          <ThemedImage
+            srcLight="/images/Engineering&SecurityInsightsLightmode.png"
+            srcDark="/images/Engineering&SecurityInsights.png"
             alt=""
             fill
             priority

@@ -1,10 +1,10 @@
 "use client"
 
-import Image from "next/image"
 import { motion, type Transition } from "framer-motion"
 import { ShieldCheck, TrendingUp } from "lucide-react"
 
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
+import { ThemedImage } from "@/components/layout/themed-image"
 
 function floatTransition(delay: number): Transition {
   return { duration: 5, repeat: Infinity, ease: "easeInOut", delay }
@@ -27,8 +27,9 @@ export function HeroBackground() {
 
   return (
     <>
-      <Image
-        src="/images/Background1.png"
+      <ThemedImage
+        srcLight="/images/Background1Lightmode.png"
+        srcDark="/images/Background1.png"
         alt=""
         fill
         priority

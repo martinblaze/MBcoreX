@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
@@ -28,16 +28,16 @@ export const metadata: Metadata = {
   },
   description:
     "MB CoreX is a software development and cybersecurity company delivering secure, scalable digital solutions for businesses ready to grow.",
-  icons: {
-    icon: [
-      { url: "/favicon.png", type: "image/png" },
-      { url: "/images/MBxlogoremovebg.png", type: "image/png" },
-    ],
-    apple: "/favicon.png",
-  },
   verification: analyticsConfig.googleSiteVerification
     ? { google: analyticsConfig.googleSiteVerification }
     : undefined,
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#05070B" },
+  ],
 };
 
 export default function RootLayout({
@@ -48,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">

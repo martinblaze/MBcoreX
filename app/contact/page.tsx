@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import { MapPin } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
 import { BackgroundHero } from "@/components/layout/background-hero"
+import { ThemedImage } from "@/components/layout/themed-image"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Heading, Text, Caption } from "@/components/typography/typography"
 import { Reveal } from "@/components/motion/reveal"
@@ -40,8 +40,9 @@ export default function ContactPage() {
 
       <BackgroundHero
         background={
-          <Image
-            src="/images/Let'sBuildSomethingExceptional.png"
+          <ThemedImage
+            srcLight="/images/Let'sBuildSomethingExceptionalLightmode.png"
+            srcDark="/images/Let'sBuildSomethingExceptional.png"
             alt=""
             fill
             priority

@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 
 import { Section } from "@/components/layout/section"
 import { SplitLayout } from "@/components/layout/split-layout"
 import { BackgroundHero } from "@/components/layout/background-hero"
+import { ThemedImage } from "@/components/layout/themed-image"
 import { Grid } from "@/components/layout/grid"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Display, Heading, Text, Caption } from "@/components/typography/typography"
@@ -37,8 +37,9 @@ export default function AboutPage() {
 
       <BackgroundHero
         background={
-          <Image
-            src="/images/Background2.png"
+          <ThemedImage
+            srcLight="/images/Background2Lightmode.png"
+            srcDark="/images/Background2.png"
             alt=""
             fill
             priority
@@ -161,8 +162,9 @@ export default function AboutPage() {
       <BackgroundHero
         scrim="full"
         background={
-          <Image
-            src="/images/OurJourney.png"
+          <ThemedImage
+            srcLight="/images/OurJourneyLightmode.png"
+            srcDark="/images/OurJourney.png"
             alt=""
             fill
             sizes="100vw"

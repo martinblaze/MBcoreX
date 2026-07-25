@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import { Award, Fingerprint, Lock, Network, Radar, ScanEye, ShieldCheck } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
 import { SplitLayout } from "@/components/layout/split-layout"
 import { BackgroundHero } from "@/components/layout/background-hero"
+import { ThemedImage } from "@/components/layout/themed-image"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Heading, Text, Caption } from "@/components/typography/typography"
 import { Button } from "@/components/ui/button"
@@ -83,8 +83,9 @@ export default function CybersecurityPage() {
         minHeightClass="lg:min-h-[620px]"
         scrim="light"
         background={
-          <Image
-            src="/images/Background3.png"
+          <ThemedImage
+            srcLight="/images/Background3Lightmode.png"
+            srcDark="/images/Background3.png"
             alt=""
             fill
             priority
@@ -143,8 +144,9 @@ export default function CybersecurityPage() {
       <BackgroundHero
         scrim="full"
         background={
-          <Image
-            src="/images/SecureDevelopmentLifecycle.jpg"
+          <ThemedImage
+            srcLight="/images/SecureDevelopmentLifecycleLightmode.png"
+            srcDark="/images/SecureDevelopmentLifecycle.jpg"
             alt=""
             fill
             sizes="100vw"

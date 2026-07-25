@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import { Check, FileText } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
 import { BackgroundHero } from "@/components/layout/background-hero"
+import { ThemedImage } from "@/components/layout/themed-image"
 import { Grid } from "@/components/layout/grid"
 import { Divider } from "@/components/layout/divider"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
@@ -52,8 +52,9 @@ export default function ServicesPage() {
       <BackgroundHero
         scrim="light"
         background={
-          <Image
-            src="/images/Solutions.jpg"
+          <ThemedImage
+            srcLight="/images/SolutionsLightmode.png"
+            srcDark="/images/Solutions.jpg"
             alt=""
             fill
             priority
