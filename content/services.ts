@@ -27,6 +27,8 @@ export type Service = {
   description: string
   benefits: string[]
   deliverables: string[]
+  /** Dedicated SEO landing page for this service, if one exists — falls back to the `/services#slug` anchor. */
+  href?: string
 }
 
 export const services: Service[] = [
@@ -35,6 +37,7 @@ export const services: Service[] = [
     category: "Software Engineering",
     icon: Code2,
     title: "Custom Software",
+    href: "/custom-software",
     shortDescription: "Tailored applications built for your business needs.",
     description:
       "High-performance web and mobile applications designed around how your business actually operates, not a generic template forced to fit.",
@@ -57,6 +60,7 @@ export const services: Service[] = [
     category: "Software Engineering",
     icon: Rocket,
     title: "SaaS Development",
+    href: "/saas-development",
     shortDescription: "Scalable SaaS platforms built with security in mind.",
     description:
       "Multi-tenant SaaS products built with subscription billing, secure data isolation, and performance in mind from day one.",
@@ -68,6 +72,7 @@ export const services: Service[] = [
     category: "Software Engineering",
     icon: Code2,
     title: "Web Applications",
+    href: "/web-development",
     shortDescription: "Modern, responsive, high-performing websites.",
     description:
       "Marketing sites, corporate websites and web apps that load fast, rank well, and represent your brand at a premium standard.",
@@ -129,6 +134,7 @@ export const services: Service[] = [
     category: "Artificial Intelligence",
     icon: Workflow,
     title: "Workflow Automation",
+    href: "/business-automation",
     shortDescription: "Automate the repetitive parts of your operations.",
     description: "We identify and automate the repetitive operational work slowing your team down, from data entry to reporting.",
     benefits: ["Frees up staff time for higher-value work", "Reduces manual data-entry errors", "Auditable automation logic"],

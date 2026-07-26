@@ -9,6 +9,7 @@ import { Heading, Text, Caption } from "@/components/typography/typography"
 import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/motion/reveal"
 import { FeatureGrid } from "@/components/sections/feature-grid"
+import { RelatedServices } from "@/components/sections/related-services"
 import { CTABanner } from "@/components/sections/cta-banner"
 import { StickyMobileCta } from "@/components/sections/sticky-mobile-cta"
 import { JsonLd } from "@/components/seo/json-ld"
@@ -18,9 +19,9 @@ import { getServicesByCategory } from "@/content/services"
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "AI Solutions",
+  title: "AI Software Development Company in Nigeria",
   description:
-    "MB CoreX uses AI-assisted development workflows to increase productivity, accelerate delivery and improve code quality — always with human oversight.",
+    "MB CoreX is an AI software development company in Nigeria — AI-assisted development workflows that increase productivity, accelerate delivery and improve code quality, always with human oversight.",
   path: "/ai-solutions",
 })
 
@@ -114,6 +115,17 @@ export default function AISolutionsPage() {
             description: service.shortDescription,
           }))}
         />
+      </Section>
+
+      <Section>
+        <Reveal>
+          <div className="mx-auto mb-10 max-w-2xl text-center">
+            <Heading level={2} size="xl">
+              Explore Other Services
+            </Heading>
+          </div>
+        </Reveal>
+        <RelatedServices currentHref="/ai-solutions" />
       </Section>
 
       <CTABanner

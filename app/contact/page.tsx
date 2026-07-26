@@ -16,9 +16,9 @@ import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo"
 import { siteConfig } from "@/lib/constants"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact",
+  title: "Contact — Software Development Company in Nigeria",
   description:
-    "Get in touch with MB CoreX — book a consultation or send us a message about your software or cybersecurity project.",
+    "Get in touch with MB CoreX, a software development and cybersecurity company in Nigeria — book a free consultation or send us a message about your project.",
   path: "/contact",
 })
 

@@ -63,6 +63,7 @@ export function organizationJsonLd() {
     email: siteConfig.email,
     telephone: siteConfig.phone,
     address: { "@type": "PostalAddress", addressCountry: "NG" },
+    areaServed: { "@type": "Country", name: "Nigeria" },
     sameAs: [],
   }
 }
@@ -80,11 +81,11 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   }
 }
 
-export function caseStudyJsonLd(project: { title: string; summary: string; slug: string; image: string }) {
+export function caseStudyJsonLd(project: { title: string; seoTitle?: string; summary: string; slug: string; image: string }) {
   return {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    name: project.title,
+    name: project.seoTitle ?? project.title,
     description: project.summary,
     url: `${siteUrl}/portfolio/${project.slug}`,
     image: `${siteUrl}${project.image}`,
@@ -131,13 +132,13 @@ export function faqJsonLd(items: { question: string; answer: string }[]) {
   }
 }
 
-export function serviceJsonLd(service: { title: string; description: string; slug: string }) {
+export function serviceJsonLd(service: { title: string; description: string; slug: string; href?: string }) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     name: service.title,
     description: service.description,
     provider: { "@type": "Organization", name: siteConfig.name, url: siteUrl },
-    url: `${siteUrl}/services#${service.slug}`,
+    url: `${siteUrl}${service.href ?? `/services#${service.slug}`}`,
   }
 }

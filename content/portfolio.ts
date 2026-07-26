@@ -1,6 +1,8 @@
 export type PortfolioProject = {
   slug: string
   title: string
+  /** Search-intent H1/`<title>` for the detail page — `title` stays short for cards/nav. */
+  seoTitle: string
   category: string
   industry: string
   tags: string[]
@@ -28,6 +30,7 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "diagsync",
     title: "DiagSync",
+    seoTitle: "How We Built a Laboratory Management System for a Diagnostics Lab — DiagSync",
     category: "Laboratory Management System",
     industry: "Healthcare / Diagnostics",
     tags: ["Healthcare", "SaaS", "Dashboard"],
@@ -70,6 +73,7 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "batamart",
     title: "Batamart",
+    seoTitle: "How We Built a Secure Student Marketplace Platform — Batamart",
     category: "Student Marketplace Platform",
     industry: "E-commerce / Education",
     tags: ["E-commerce", "Marketplace", "Web App"],
@@ -113,6 +117,7 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "reene-medical-diagnostics",
     title: "Reene Medical Diagnostics",
+    seoTitle: "Building a Trust-First Corporate Website for a Healthcare Provider — Reene Medical Diagnostics",
     category: "Corporate Website",
     industry: "Healthcare",
     tags: ["Healthcare", "Corporate Website"],

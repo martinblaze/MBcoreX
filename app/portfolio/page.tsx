@@ -12,9 +12,9 @@ import { portfolioProjects } from "@/content/portfolio"
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Portfolio",
+  title: "Software Development Portfolio — Nigeria",
   description:
-    "Explore MB CoreX's portfolio — DiagSync, Batamart and Reene Medical Diagnostics — real software built for real businesses.",
+    "Explore MB CoreX's software development portfolio — DiagSync, Batamart and Reene Medical Diagnostics — real custom software and healthcare software built for businesses in Nigeria.",
   path: "/portfolio",
 })
 

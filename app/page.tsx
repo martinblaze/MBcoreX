@@ -4,8 +4,8 @@ import dynamic from "next/dynamic"
 import {
   Award,
   BrainCircuit,
-  Cloud,
   Code2,
+  HeartPulse,
   LayoutDashboard,
   Rocket,
   ScanEye,
@@ -52,9 +52,9 @@ import { buildMetadata } from "@/lib/seo"
 import { siteConfig } from "@/lib/constants"
 
 export const metadata: Metadata = buildMetadata({
-  title: "MB CoreX — Secure Software Engineering & Cybersecurity",
+  title: "Software Development Company in Nigeria",
   description:
-    "MB CoreX is a software development and cybersecurity company delivering secure, scalable digital solutions for businesses ready to grow in a digital world.",
+    "MB CoreX is a software development and cybersecurity company in Nigeria, building secure, scalable digital solutions — custom software, SaaS, AI integrations and security audits — for businesses ready to grow.",
   path: "/",
 })
 
@@ -68,14 +68,14 @@ const trustPoints = [
 ]
 
 const featuredServices = [
-  { icon: Code2, title: "Software Development", description: "Custom, high-performance applications built for your business.", href: "/services#custom-software" },
-  { icon: LayoutDashboard, title: "Web Development", description: "Modern, responsive websites that drive real results.", href: "/services#web-applications" },
+  { icon: Code2, title: "Software Development", description: "Custom, high-performance applications built for your business.", href: "/custom-software" },
+  { icon: LayoutDashboard, title: "Web Development", description: "Modern, responsive websites that drive real results.", href: "/web-development" },
   { icon: Smartphone, title: "Mobile Apps", description: "Cross-platform apps that feel native and perform fast.", href: "/services#mobile-apps" },
-  { icon: Rocket, title: "SaaS Platforms", description: "Scalable, multi-tenant products built with security in mind.", href: "/services#saas-development" },
+  { icon: Rocket, title: "SaaS Platforms", description: "Scalable, multi-tenant products built with security in mind.", href: "/saas-development" },
   { icon: BrainCircuit, title: "AI Solutions", description: "Practical AI features integrated where they add real value.", href: "/ai-solutions" },
   { icon: Shield, title: "Cybersecurity", description: "Audits, compliance readiness and secure-by-design engineering.", href: "/cybersecurity" },
-  { icon: Cloud, title: "Cloud Infrastructure", description: "Secure, right-sized cloud architecture that scales with you.", href: "/services#cloud-infrastructure" },
-  { icon: LayoutDashboard, title: "API Development", description: "Secure, documented APIs and third-party integrations.", href: "/services#api-development" },
+  { icon: Zap, title: "Business Automation", description: "Workflow and process automation that frees up staff time.", href: "/business-automation" },
+  { icon: HeartPulse, title: "Healthcare Software", description: "Lab management and clinic software built for sensitive data.", href: "/healthcare-software" },
 ]
 
 const cybersecurityPoints = [
@@ -122,8 +122,8 @@ const faqItems = [
 const homeJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "MB CoreX — Secure Software Engineering & Cybersecurity",
-  description: "MB CoreX is a software development and cybersecurity company delivering secure, scalable digital solutions.",
+  name: "MB CoreX | Software Development Company in Nigeria",
+  description: "MB CoreX is a software development and cybersecurity company in Nigeria delivering secure, scalable digital solutions.",
 }
 
 export default function HomePage() {
@@ -138,7 +138,7 @@ export default function HomePage() {
             We Build Secure <span className="text-primary">Digital Solutions</span> That Scale.
           </>
         }
-        subheading="MB CoreX is a software development and cybersecurity company delivering innovative, reliable and secure solutions for businesses ready to grow in a digital world."
+        subheading="MB CoreX is a software development and cybersecurity company in Nigeria, delivering innovative, reliable and secure solutions for businesses ready to grow in a digital world."
         primaryAction={{ label: "Book a Consultation", href: "/contact" }}
         secondaryAction={{ label: "View Our Work", href: "/portfolio" }}
         background={<HeroBackground />}

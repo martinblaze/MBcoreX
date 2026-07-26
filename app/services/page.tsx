@@ -22,9 +22,9 @@ import { buildMetadata, breadcrumbJsonLd, serviceJsonLd } from "@/lib/seo"
 import { ctaCopy } from "@/lib/constants"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Services",
+  title: "Software Development Services in Nigeria",
   description:
-    "Software engineering, artificial intelligence and cybersecurity services from MB CoreX — custom software, SaaS, AI integrations, security audits and compliance readiness.",
+    "Software engineering, artificial intelligence and cybersecurity services from MB CoreX, a software development company in Nigeria — custom software, SaaS, AI integrations, security audits and compliance readiness.",
   path: "/services",
 })
 
@@ -140,9 +140,16 @@ export default function ServicesPage() {
                               </div>
                             </div>
 
-                            <Button variant="outline" className="mt-auto w-fit" render={<Link href="/contact" />}>
-                              {ctaCopy.primary}
-                            </Button>
+                            <div className="mt-auto flex flex-wrap items-center gap-3">
+                              {service.href && (
+                                <Button variant="outline" render={<Link href={service.href} />}>
+                                  Learn More
+                                </Button>
+                              )}
+                              <Button variant="outline" render={<Link href="/contact" />}>
+                                {ctaCopy.primary}
+                              </Button>
+                            </div>
                           </CardContent>
                         </Card>
                         <JsonLd data={serviceJsonLd(service)} />

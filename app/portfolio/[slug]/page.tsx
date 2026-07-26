@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return {}
 
   return buildMetadata({
-    title: `${project.title} — Case Study`,
+    title: project.seoTitle,
     description: project.summary,
     path: `/portfolio/${project.slug}`,
     image: { url: `https://mbcorex.com${project.image}`, width: 1433, height: 1099, alt: project.title },
@@ -79,7 +79,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
             {project.category} · {project.industry}
           </Caption>
           <Heading level={1} size="xl" className="mt-4 max-w-2xl">
-            {project.title}
+            {project.seoTitle}
           </Heading>
           <Text tone="muted" className="mt-4 max-w-xl">
             {project.summary}

@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/motion/reveal"
 import { FeatureGrid } from "@/components/sections/feature-grid"
 import { ProcessTimeline } from "@/components/sections/timeline"
+import { RelatedServices } from "@/components/sections/related-services"
 import { CTABanner } from "@/components/sections/cta-banner"
 import { StickyMobileCta } from "@/components/sections/sticky-mobile-cta"
 import { JsonLd } from "@/components/seo/json-ld"
@@ -21,9 +22,9 @@ import { getServicesByCategory } from "@/content/services"
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Cybersecurity",
+  title: "Cybersecurity Company in Nigeria",
   description:
-    "MB CoreX cybersecurity services: secure software development, risk assessments, security audits, and compliance readiness for NIST and SOC 2 frameworks.",
+    "MB CoreX is a cybersecurity company in Nigeria offering secure software development, risk assessments, security audits, and NIST 800-53 / SOC 2 compliance readiness.",
   path: "/cybersecurity",
 })
 
@@ -236,6 +237,17 @@ export default function CybersecurityPage() {
             .slice(0, 6)
             .map((service) => ({ icon: service.icon, title: service.title, description: service.shortDescription }))}
         />
+      </Section>
+
+      <Section>
+        <Reveal>
+          <div className="mx-auto mb-10 max-w-2xl text-center">
+            <Heading level={2} size="xl">
+              Explore Other Services
+            </Heading>
+          </div>
+        </Reveal>
+        <RelatedServices currentHref="/cybersecurity" />
       </Section>
 
       <CTABanner

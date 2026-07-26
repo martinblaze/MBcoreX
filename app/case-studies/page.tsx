@@ -18,9 +18,9 @@ import { companyStats } from "@/content/stats"
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Case Studies",
+  title: "Case Studies — Real Software Outcomes for Nigerian Businesses",
   description:
-    "Real business problems, real solutions — before-and-after case studies from MB CoreX's work with DiagSync, Batamart and Reene Medical Diagnostics.",
+    "See real before-and-after outcomes from MB CoreX's software projects — DiagSync, Batamart and Reene Medical Diagnostics — the problem, the solution, the technology and the results.",
   path: "/case-studies",
 })
 

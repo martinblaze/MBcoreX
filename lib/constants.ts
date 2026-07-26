@@ -24,18 +24,15 @@ export const primaryNav: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ]
 
-/**
- * Services nav dropdown. Points at anchors on /services (and the two
- * standalone pages that already exist) rather than dedicated /solutions/*
- * landing pages — those are a planned future deliverable (see Stage 1 IA)
- * not yet built, and a dead link would fail worse than a shared anchor.
- */
+/** Services nav dropdown — one entry per dedicated SEO landing page (see docs/02-seo-keyword-strategy.md). */
 export const solutionsNav: (NavItem & { description: string })[] = [
-  { label: "Software Development", href: "/services#custom-software", description: "Custom, enterprise & SaaS builds" },
+  { label: "Custom Software", href: "/custom-software", description: "Bespoke, enterprise-grade builds" },
+  { label: "Web Development", href: "/web-development", description: "Marketing & corporate sites" },
+  { label: "SaaS Development", href: "/saas-development", description: "Multi-tenant SaaS products" },
+  { label: "Business Automation", href: "/business-automation", description: "Workflow & process automation" },
+  { label: "Healthcare Software", href: "/healthcare-software", description: "Lab & clinic systems" },
   { label: "Cybersecurity", href: "/cybersecurity", description: "Audits, compliance, pen testing" },
   { label: "AI Automation", href: "/ai-solutions", description: "AI-accelerated delivery" },
-  { label: "Medical Software", href: "/portfolio/diagsync", description: "Lab & healthcare systems" },
-  { label: "Website Development", href: "/services#web-applications", description: "Marketing & corporate sites" },
 ]
 
 export const footerNav: { title: string; links: NavItem[] }[] = [

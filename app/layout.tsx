@@ -23,11 +23,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "MB CoreX — Software Engineering & Cybersecurity",
+    default: "MB CoreX | Software Development & Cybersecurity Company in Nigeria",
     template: "%s | MB CoreX",
   },
   description:
-    "MB CoreX is a software development and cybersecurity company delivering secure, scalable digital solutions for businesses ready to grow.",
+    "MB CoreX is a software development and cybersecurity company in Nigeria delivering secure, scalable digital solutions — custom software, web & mobile apps, AI integrations and security audits.",
   verification: analyticsConfig.googleSiteVerification
     ? { google: analyticsConfig.googleSiteVerification }
     : undefined,

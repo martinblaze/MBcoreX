@@ -20,9 +20,9 @@ import { companyStats } from "@/content/stats"
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "About MB CoreX",
+  title: "About MB CoreX — Software Engineering Team in Nigeria",
   description:
-    "MB CoreX is building technology and securing futures — learn about our mission, founder Martin Blaze, and how we combine engineering with security expertise.",
+    "MB CoreX is a software development and cybersecurity company in Nigeria — learn about our mission, founder Martin Blaze, and how we combine engineering with security expertise.",
   path: "/about",
 })
 
