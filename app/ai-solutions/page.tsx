@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Bot, BrainCircuit, Gauge, ShieldCheck, Sparkles, Workflow } from "lucide-react"
+import { Bot, BrainCircuit, Crown, Gauge, ShieldCheck, Workflow } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
 import { SplitLayout } from "@/components/layout/split-layout"
@@ -28,7 +28,7 @@ export const metadata: Metadata = buildMetadata({
 const benefits = [
   { icon: Gauge, title: "Faster Delivery", description: "AI-assisted iteration shortens time-to-market without skipping steps." },
   { icon: Workflow, title: "Automation", description: "Repetitive engineering and testing work is automated where it makes sense." },
-  { icon: Sparkles, title: "Improved Code Quality", description: "AI-assisted review helps catch issues earlier in the build, not after launch." },
+  { icon: Crown, title: "Improved Code Quality", description: "AI-assisted review helps catch issues earlier in the build, not after launch." },
   { icon: BrainCircuit, title: "Practical AI Features", description: "AI integrated into your product only where it genuinely helps users." },
   { icon: Bot, title: "Intelligent Assistants", description: "Scoped, reliable assistants for internal teams or customer support." },
   { icon: ShieldCheck, title: "Human Oversight", description: "Every architectural decision and release stays under human review." },
@@ -89,7 +89,7 @@ export default function AISolutionsPage() {
               <ul className="flex flex-col gap-3">
                 {aiApproach.points.map((point) => (
                   <li key={point} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 text-body-sm text-foreground">
-                    <Sparkles className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+                    <Crown className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
                     {point}
                   </li>
                 ))}

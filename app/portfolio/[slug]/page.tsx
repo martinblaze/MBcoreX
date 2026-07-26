@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ShieldCheck, Sparkles, Target, Wrench } from "lucide-react"
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Crown, ShieldCheck, Target, Wrench } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
 import { Grid } from "@/components/layout/grid"
@@ -157,7 +157,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
       <Section spacing="tight">
         <Reveal>
           <div className="flex items-center gap-2">
-            <Sparkles className="size-5 text-primary" aria-hidden="true" />
+            <Crown className="size-5 text-primary" aria-hidden="true" />
             <Heading level={2} size="md">
               AI Tools Used During Development
             </Heading>
@@ -170,7 +170,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
           <ul className="grid gap-3 sm:grid-cols-2">
             {project.aiToolsUsed.map((tool) => (
               <li key={tool} className="flex items-start gap-2.5 rounded-xl border border-border bg-card p-4 text-body-sm text-foreground">
-                <Sparkles className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+                <Crown className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
                 {tool}
               </li>
             ))}

@@ -4,6 +4,7 @@ import {
   BrainCircuit,
   Cloud,
   Code2,
+  Crown,
   Database,
   Fingerprint,
   KeyRound,
@@ -18,7 +19,6 @@ import {
   ShieldAlert,
   ShieldCheck,
   Smartphone,
-  Sparkles,
   Workflow,
   type LucideIcon,
 } from "lucide-react"
@@ -92,7 +92,7 @@ export const aiIcons: Record<string, LucideIcon> = {
   assistant: Bot,
   intelligence: BrainCircuit,
   automation: Workflow,
-  speed: Sparkles,
+  speed: Crown,
 }
 
 /** Brand/social icons keyed to `SocialChannel.id` from lib/constants.ts. */

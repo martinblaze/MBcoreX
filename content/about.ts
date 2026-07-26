@@ -1,4 +1,4 @@
-import { Award, Rocket, ShieldCheck, Sparkles, type LucideIcon } from "lucide-react"
+import { Award, Crown, Rocket, ShieldCheck, type LucideIcon } from "lucide-react"
 import type { TimelineEntry } from "@/components/sections/timeline"
 
 export const founder = {
@@ -26,7 +26,7 @@ export const vision =
 
 export const values: { icon: LucideIcon; title: string; description: string }[] = [
   {
-    icon: Sparkles,
+    icon: Crown,
     title: "Innovation",
     description: "We build modern solutions that solve real business problems, not solutions in search of a problem.",
   },

@@ -2,6 +2,7 @@ import {
   BrainCircuit,
   Cloud,
   Code2,
+  Crown,
   Database,
   LayoutDashboard,
   Lock,
@@ -11,7 +12,6 @@ import {
   ScanEye,
   ShieldCheck,
   Smartphone,
-  Sparkles,
   Workflow,
   type LucideIcon,
 } from "lucide-react"
@@ -143,7 +143,7 @@ export const services: Service[] = [
   {
     slug: "intelligent-assistants",
     category: "Artificial Intelligence",
-    icon: Sparkles,
+    icon: Crown,
     title: "Intelligent Assistants",
     shortDescription: "AI-assisted tools for your team or customers.",
     description: "Purpose-built assistants for internal teams or customer-facing support, scoped tightly to be reliable rather than generically \"smart\".",
