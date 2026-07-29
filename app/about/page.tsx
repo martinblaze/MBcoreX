@@ -17,7 +17,7 @@ import { JsonLd } from "@/components/seo/json-ld"
 
 import { founder, mission, vision, values, aiApproach, timeline, technologies } from "@/content/about"
 import { companyStats } from "@/content/stats"
-import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo"
+import { buildMetadata, breadcrumbJsonLd, personJsonLd } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
   title: "About MB CoreX — Software Engineering Team in Nigeria",
@@ -30,6 +30,7 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])} />
+      <JsonLd data={personJsonLd(founder)} />
 
       <Section spacing="tight">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />

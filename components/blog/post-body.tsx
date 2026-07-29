@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import type { BlogBlock } from "@/content/insights"
 import { Heading, Text, Quote } from "@/components/typography/typography"
 import { PostCodeBlock } from "./post-code-block"
@@ -44,6 +46,25 @@ export function PostBody({ blocks }: { blocks: BlogBlock[] }) {
             )
           case "code":
             return <PostCodeBlock key={index} code={block.code} lang={block.lang} filename={block.filename} />
+          case "links":
+            return (
+              <div key={index} className="flex flex-col gap-3 rounded-xl border border-border bg-surface p-5">
+                <Text size="sm" tone="muted" className="font-medium uppercase tracking-wide">
+                  {block.heading}
+                </Text>
+                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                  {block.items.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="text-body-md font-medium text-primary underline underline-offset-4 hover:no-underline"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )
           default:
             return null
         }

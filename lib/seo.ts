@@ -68,6 +68,20 @@ export function organizationJsonLd() {
   }
 }
 
+/** Person JSON-LD for the founder bio on /about — knowledge areas only, no certification claim. */
+export function personJsonLd(person: { name: string; role: string; bio: string; knowledgeAreas: string[] }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: person.name,
+    jobTitle: person.role,
+    description: person.bio,
+    knowsAbout: person.knowledgeAreas,
+    worksFor: { "@type": "Organization", name: siteConfig.name, url: siteUrl },
+    url: `${siteUrl}/about`,
+  }
+}
+
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
