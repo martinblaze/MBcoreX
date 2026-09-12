@@ -1,13 +1,7 @@
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
-import { motion } from "framer-motion"
 
-import { Badge } from "@/components/ui/badge"
-import { Heading, Text } from "@/components/typography/typography"
-import { cardHover } from "@/lib/motion"
 import { cn } from "@/lib/utils"
 
 export type PortfolioCardProps = {
@@ -21,47 +15,57 @@ export type PortfolioCardProps = {
   className?: string
 }
 
-/** Portfolio/project grid card — thumbnail image (or client logo) scales on hover, category tag, link to the case study. */
-export function PortfolioCard({ title, category, description, image, logo, href, className }: PortfolioCardProps) {
+/**
+ * Portfolio/project grid card.
+ *
+ * The image is the card — copy sits below it on the page background rather
+ * than inside a bordered panel, so a grid of these reads as a contact sheet.
+ * Hover pushes the image in slowly (900ms expo) while a scrim and the arrow
+ * fade up; the long duration is what separates "expensive" from "bouncy".
+ */
+export function PortfolioCard({
+  title,
+  category,
+  description,
+  image,
+  logo,
+  href,
+  className,
+}: PortfolioCardProps) {
   return (
-    <motion.div {...cardHover} className={cn("group h-full", className)}>
-      <Link href={href} className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card">
-        <div className="relative aspect-[16/10] overflow-hidden bg-surface-elevated">
-          {logo ? (
-            <Image
-              src={logo}
-              alt={`${title} logo`}
-              fill
-              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              className="object-contain p-8 transition-transform duration-300 ease-out group-hover:scale-[1.04] sm:p-10"
-            />
-          ) : (
-            <Image
-              src={image}
-              alt=""
-              fill
-              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]"
-            />
+    <Link href={href} className={cn("group flex h-full flex-col", className)}>
+      <div className="relative aspect-[16/11] overflow-hidden bg-surface-elevated">
+        <Image
+          src={logo ?? image}
+          alt={logo ? `${title} logo` : ""}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className={cn(
+            "transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]",
+            logo ? "object-contain p-10" : "object-cover"
           )}
-        </div>
-        <div className="flex flex-1 flex-col gap-2 p-5">
-          <div className="flex items-center justify-between gap-2">
-            <Badge variant="outline">{category}</Badge>
-            <ArrowUpRight
-              className="size-4 text-muted-foreground transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
-              aria-hidden="true"
-            />
-          </div>
-          <Heading level={3} size="sm">
-            {title}
-          </Heading>
-          <Text size="sm" tone="muted" className="line-clamp-2">
-            {description}
-          </Text>
-        </div>
-      </Link>
-    </motion.div>
+        />
+
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-foreground/0 transition-colors duration-500 group-hover:bg-foreground/10"
+        />
+        <span aria-hidden="true" className="pointer-events-none absolute inset-0 border border-foreground/10" />
+
+        <span
+          aria-hidden="true"
+          className="absolute right-0 bottom-0 flex size-12 translate-y-full items-center justify-center bg-primary text-primary-foreground transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0"
+        >
+          <ArrowUpRight className="size-5" />
+        </span>
+      </div>
+
+      <div className="flex flex-1 flex-col gap-3 pt-6">
+        <span className="text-caption font-medium uppercase text-primary">{category}</span>
+        <h3 className="font-display text-2xl font-normal text-foreground">{title}</h3>
+        <p className="line-clamp-2 text-body-sm text-pretty text-muted-foreground">{description}</p>
+      </div>
+    </Link>
   )
 }
 

@@ -1,9 +1,10 @@
 import Link from "next/link"
 
-import { Button } from "@/components/ui/button"
 import { Section } from "@/components/layout/section"
-import { Heading, Text } from "@/components/typography/typography"
+import { MaskRevealInView } from "@/components/motion/mask-reveal"
 import { Reveal } from "@/components/motion/reveal"
+import { RubberButton } from "@/components/ui/rubber-button"
+import { Caption, Text } from "@/components/typography/typography"
 import { isInternalHref } from "@/lib/utils"
 
 type CTABannerProps = {
@@ -13,42 +14,67 @@ type CTABannerProps = {
   primaryHref: string
   secondaryLabel?: string
   secondaryHref?: string
+  eyebrow?: string
 }
 
-/** The closing CTA present near the bottom of every page. */
-export function CTABanner({ heading, description, primaryLabel, primaryHref, secondaryLabel, secondaryHref }: CTABannerProps) {
+/**
+ * The closing CTA on every page — a full-bleed tonal band.
+ *
+ * Uses the elevated surface rather than inverting to the foreground colour:
+ * an inverted band reads as a dark slab mid-page in light mode (and a glaring
+ * light one in dark mode), which fights the theme instead of shifting within
+ * it. The curved seam and the extra vertical space do the punctuation.
+ */
+export function CTABanner({
+  heading,
+  description,
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref,
+  eyebrow = "Start a project",
+}: CTABannerProps) {
   return (
-    <Section glow="center">
-      <Reveal>
-        <div className="flex flex-col items-center gap-6 rounded-2xl border border-border bg-surface px-6 py-16 text-center sm:px-16">
-          <Heading level={2} size="xl" className="max-w-2xl">
-            {heading}
-          </Heading>
+    <Section tone="surface" spacing="loose" curveTop="background" curveBottom="background">
+      <div className="flex flex-col items-center text-center">
+        <Reveal variant="fade">
+          <Caption className="mb-8 flex items-center gap-3 text-primary">
+            <span aria-hidden="true" className="inline-block h-px w-8 bg-primary" />
+            {eyebrow}
+          </Caption>
+        </Reveal>
+
+        <h2 className="max-w-4xl font-display text-display-xl font-normal text-balance text-foreground">
+          <MaskRevealInView lines={[heading]} />
+        </h2>
+
+        <Reveal variant="fade">
           {description && (
-            <Text size="lg" tone="muted" className="max-w-xl">
+            <Text size="lg" tone="muted" className="mx-auto mt-8 max-w-xl text-pretty">
               {description}
             </Text>
           )}
-          <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
-            <Button
+
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+            <RubberButton
               variant="cta"
-              size="lg"
               render={isInternalHref(primaryHref) ? <Link href={primaryHref} /> : <a href={primaryHref} />}
             >
               {primaryLabel}
-            </Button>
+            </RubberButton>
             {secondaryLabel && secondaryHref && (
-              <Button
+              <RubberButton
                 variant="outline"
-                size="lg"
-                render={isInternalHref(secondaryHref) ? <Link href={secondaryHref} /> : <a href={secondaryHref} />}
+                render={
+                  isInternalHref(secondaryHref) ? <Link href={secondaryHref} /> : <a href={secondaryHref} />
+                }
               >
                 {secondaryLabel}
-              </Button>
+              </RubberButton>
             )}
           </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </Section>
   )
 }

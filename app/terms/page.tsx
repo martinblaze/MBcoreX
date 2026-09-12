@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 
 import { Section } from "@/components/layout/section"
+import { PageHero } from "@/components/sections/page-hero"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Heading, Text } from "@/components/typography/typography"
 
@@ -60,17 +61,13 @@ const sections = [
 export default function TermsPage() {
   return (
     <>
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Terms of Service" }]} />
-      </Section>
-      <Section spacing="tight">
-        <Heading level={1} size="lg">
-          Terms of Service
-        </Heading>
-        <Text tone="muted" className="mt-3">
-          Last updated: July 2026
-        </Text>
-      </Section>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Terms of Service" }]} />}
+        eyebrow="Last updated: July 2026"
+        title={[
+          "Terms of service.",
+        ]}
+      />
       <Section containerWidth="narrow">
         <div className="flex flex-col gap-8">
           {sections.map((section) => (

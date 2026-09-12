@@ -17,6 +17,10 @@ const csp = [
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
+  // Live product previews are embedded as iframes on the work showcase and
+  // case-study pages. Without an explicit frame-src these fall back to
+  // default-src 'self' and are blocked. Each origin is one of our own builds.
+  "frame-src 'self' https://www.batamart.com https://batamart.com https://reenemedicaldiagnostics.com https://diagsync.vercel.app",
   "font-src 'self' data:",
   "connect-src 'self'",
   "frame-ancestors 'none'",

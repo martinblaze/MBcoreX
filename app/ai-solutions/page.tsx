@@ -1,12 +1,11 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { Bot, BrainCircuit, Crown, Gauge, ShieldCheck, Workflow } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
+import { PageHero } from "@/components/sections/page-hero"
 import { SplitLayout } from "@/components/layout/split-layout"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
-import { Button } from "@/components/ui/button"
+import { Accent, Heading, Text } from "@/components/typography/typography"
 import { Reveal } from "@/components/motion/reveal"
 import { FeatureGrid } from "@/components/sections/feature-grid"
 import { RelatedServices } from "@/components/sections/related-services"
@@ -39,26 +38,20 @@ export default function AISolutionsPage() {
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "AI Solutions", path: "/ai-solutions" }])} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "AI Solutions" }]} />
-      </Section>
-
-      <Section glow="top">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <Caption className="text-primary">AI Solutions</Caption>
-            <Heading level={1} size="xl" className="mt-4">
-              Engineering at AI Speed — Without Cutting Corners
-            </Heading>
-            <Text tone="muted" className="mt-4">
-              {aiApproach.description}
-            </Text>
-            <Button variant="cta" size="lg" className="mt-8" render={<Link href="/contact" />}>
-              Book a Consultation
-            </Button>
-          </div>
-        </Reveal>
-      </Section>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "AI Solutions" }]} />}
+        eyebrow="AI Solutions"
+        title={[
+          "Engineering at AI speed,",
+          <Accent key="accent" tone="brand">without cutting corners.</Accent>,
+        ]}
+        description={aiApproach.description}
+        actions={[{ label: "Book a Consultation", href: "/contact" }]}
+        image={{
+          srcLight: "/images/artificialintelligence.png",
+          position: "60% center",
+        }}
+      />
 
       <Section>
         <Reveal>

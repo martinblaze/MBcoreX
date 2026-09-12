@@ -4,10 +4,9 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
-import { BackgroundHero } from "@/components/layout/background-hero"
-import { ThemedImage } from "@/components/layout/themed-image"
+import { PageHero } from "@/components/sections/page-hero"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
+import { Accent, Caption, Heading, Text } from "@/components/typography/typography"
 import { Badge } from "@/components/ui/badge"
 import { Reveal } from "@/components/motion/reveal"
 import { ImageReveal } from "@/components/motion/image-reveal"
@@ -39,35 +38,20 @@ export default async function InsightsPage({ searchParams }: Props) {
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Insights", path: "/insights" }])} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Insights" }]} />
-      </Section>
-
-      <BackgroundHero
-        background={
-          <ThemedImage
-            srcLight="/images/Engineering&SecurityInsightsLightmode.png"
-            srcDark="/images/Engineering&SecurityInsights.png"
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        }
-      >
-        <Reveal>
-          <Caption className="text-primary">Insights</Caption>
-          <Heading level={1} size="xl" className="mt-4 max-w-2xl">
-            Engineering & Security Insights
-          </Heading>
-          <Text tone="muted" className="mt-4 max-w-xl">
-            Technical writing on software engineering, AI-assisted development, cybersecurity, cloud and business
-            technology — written by the people building the software.
-          </Text>
-        </Reveal>
-      </BackgroundHero>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Insights" }]} />}
+        eyebrow="Insights"
+        title={[
+          "Engineering &amp; security",
+          <Accent key="accent" tone="brand">insights.</Accent>,
+        ]}
+        description="Technical writing on software engineering, AI-assisted development, cybersecurity, cloud and business technology — written by the people building the software."
+        image={{
+          srcLight: "/images/Engineering&SecurityInsightsLightmode.png",
+          srcDark: "/images/Engineering&SecurityInsights.png",
+          position: "center",
+        }}
+      />
 
       <Section spacing="tight">
         <Reveal>

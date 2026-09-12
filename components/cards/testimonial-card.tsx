@@ -1,8 +1,6 @@
 import { Star } from "lucide-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent } from "@/components/ui/card"
-import { Quote, Text } from "@/components/typography/typography"
 import { cn } from "@/lib/utils"
 
 export type TestimonialCardProps = {
@@ -16,6 +14,11 @@ export type TestimonialCardProps = {
   className?: string
 }
 
+/**
+ * Testimonial panel — the quote is set in the display serif at a size that
+ * makes it the focal point, with the attribution demoted to a hairline-ruled
+ * footer. A pull-quote, in other words, rather than a review widget.
+ */
 export function TestimonialCard({
   quote,
   name,
@@ -32,37 +35,40 @@ export function TestimonialCard({
     .join("")
 
   return (
-    <Card className={cn("h-full border border-border bg-card ring-0", className)}>
-      <CardContent className="flex h-full flex-col gap-4">
-        {rating > 0 && (
-          <div className="flex gap-0.5" role="img" aria-label={`${rating} out of 5 stars`}>
-            {Array.from({ length: 5 }).map((_, index) => (
-              <Star
-                key={index}
-                className={cn("size-4", index < rating ? "fill-warning text-warning" : "text-border")}
-                aria-hidden="true"
-              />
-            ))}
-          </div>
-        )}
-        <Quote className="flex-1 border-none pl-0 text-body-md not-italic text-foreground">
-          &ldquo;{quote}&rdquo;
-        </Quote>
-        <div className="flex items-center gap-3 pt-2">
-          <Avatar>
-            <AvatarImage src={avatarSrc} alt="" />
-            <AvatarFallback>{initials}</AvatarFallback>
-          </Avatar>
-          <div>
-            <Text size="sm" className="font-medium">
-              {name}
-            </Text>
-            <Text size="sm" tone="muted">
-              {role}, {company}
-            </Text>
-          </div>
+    <figure
+      className={cn(
+        "flex h-full flex-col gap-8 border border-border bg-surface-elevated p-8 lg:p-12",
+        className
+      )}
+    >
+      {rating > 0 && (
+        <div className="flex gap-1" role="img" aria-label={`${rating} out of 5 stars`}>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <Star
+              key={index}
+              className={cn("size-3.5", index < rating ? "fill-primary text-primary" : "text-border")}
+              aria-hidden="true"
+            />
+          ))}
         </div>
-      </CardContent>
-    </Card>
+      )}
+
+      <blockquote className="flex-1 font-display text-xl leading-snug text-balance text-foreground lg:text-2xl">
+        &ldquo;{quote}&rdquo;
+      </blockquote>
+
+      <figcaption className="flex items-center gap-4 border-t border-border pt-6">
+        <Avatar className="size-11">
+          <AvatarImage src={avatarSrc} alt="" />
+          <AvatarFallback>{initials}</AvatarFallback>
+        </Avatar>
+        <div className="flex flex-col gap-0.5">
+          <span className="text-body-sm font-medium text-foreground">{name}</span>
+          <span className="text-caption tracking-normal normal-case text-muted-foreground">
+            {role}, {company}
+          </span>
+        </div>
+      </figcaption>
+    </figure>
   )
 }

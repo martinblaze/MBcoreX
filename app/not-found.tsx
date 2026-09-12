@@ -6,7 +6,7 @@ import { Compass, Search as SearchIcon } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
 import { Display, Text, Caption } from "@/components/typography/typography"
-import { Button } from "@/components/ui/button"
+import { RubberButton } from "@/components/ui/rubber-button"
 import { Reveal } from "@/components/motion/reveal"
 import { SearchField } from "@/components/forms/preset-fields"
 import { searchContent } from "@/lib/search"
@@ -25,7 +25,7 @@ export default function NotFound() {
   const results = searchContent(query, 5)
 
   return (
-    <Section spacing="default" glow="center">
+    <Section spacing="default" glow="center" className="pt-32 lg:pt-40">
       <Reveal>
         <div className="mx-auto flex max-w-lg flex-col items-center gap-6 text-center">
           <div className="flex size-16 items-center justify-center rounded-full bg-accent text-primary">
@@ -67,12 +67,12 @@ export default function NotFound() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Button variant="cta" render={<Link href="/" />}>
+            <RubberButton variant="cta" render={<Link href="/" />}>
               Return Home
-            </Button>
-            <Button variant="outline" render={<Link href="/contact" />}>
+            </RubberButton>
+            <RubberButton variant="outline" render={<Link href="/contact" />}>
               Book a Consultation
-            </Button>
+            </RubberButton>
           </div>
 
           <div className="mt-4 flex flex-col items-center gap-3">

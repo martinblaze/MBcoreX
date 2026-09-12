@@ -3,10 +3,11 @@ import Link from "next/link"
 import { CreditCard, Gauge, Lock } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
+import { PageHero } from "@/components/sections/page-hero"
 import { SplitLayout } from "@/components/layout/split-layout"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
-import { Button } from "@/components/ui/button"
+import { Accent, Caption, Heading, Text } from "@/components/typography/typography"
+import { RubberButton } from "@/components/ui/rubber-button"
 import { Reveal } from "@/components/motion/reveal"
 import { FeatureGrid } from "@/components/sections/feature-grid"
 import { ProcessTimeline } from "@/components/sections/timeline"
@@ -75,27 +76,20 @@ export default function SaasDevelopmentPage() {
       <JsonLd data={serviceJsonLd(saasService)} />
       <JsonLd data={faqJsonLd(faqItems)} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "SaaS Development" }]} />
-      </Section>
-
-      <Section glow="top">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <Caption className="text-primary">SaaS Development in Nigeria</Caption>
-            <Heading level={1} size="xl" className="mt-4">
-              SaaS Products Built to Scale From Day One
-            </Heading>
-            <Text tone="muted" className="mt-4">
-              MB CoreX is a SaaS development company in Nigeria — multi-tenant products built with secure
-              data isolation, billing and performance in mind from the start.
-            </Text>
-            <Button variant="cta" size="lg" className="mt-8" render={<Link href="/contact" />}>
-              Book a Consultation
-            </Button>
-          </div>
-        </Reveal>
-      </Section>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "SaaS Development" }]} />}
+        eyebrow="SaaS Development in Nigeria"
+        title={[
+          "SaaS products built to",
+          <Accent key="accent" tone="brand">scale from day one.</Accent>,
+        ]}
+        description="MB CoreX is a SaaS development company in Nigeria — multi-tenant products built with secure data isolation, billing and performance in mind from the start."
+        actions={[{ label: "Book a Consultation", href: "/contact" }]}
+        image={{
+          srcLight: "/images/Cloud.png",
+          position: "55% center",
+        }}
+      />
 
       <Section>
         <Reveal>
@@ -133,9 +127,9 @@ export default function SaasDevelopmentPage() {
               Batamart runs vendor management, secure payments and marketplace logic on an architecture
               built to scale as vendor and buyer numbers grow.
             </Text>
-            <Button variant="outline" size="lg" className="mt-2" render={<Link href="/portfolio/batamart" />}>
+            <RubberButton variant="outline" size="lg" className="mt-2" render={<Link href="/portfolio/batamart" />}>
               View the Case Study
-            </Button>
+            </RubberButton>
           </div>
         </Reveal>
       </Section>
@@ -151,9 +145,9 @@ export default function SaasDevelopmentPage() {
                 DiagSync is a live, multi-role SaaS product — a diagnostic workflow operating system
                 running patient intake, results, reporting and revenue intelligence in one system.
               </Text>
-              <Button variant="outline" className="mt-6" render={<Link href="/portfolio/diagsync" />}>
+              <RubberButton variant="outline" className="mt-6" render={<Link href="/portfolio/diagsync" />}>
                 View the DiagSync Case Study
-              </Button>
+              </RubberButton>
             </Reveal>
           }
           end={

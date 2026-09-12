@@ -3,10 +3,11 @@ import Link from "next/link"
 import { Search } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
+import { PageHero } from "@/components/sections/page-hero"
 import { SplitLayout } from "@/components/layout/split-layout"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
-import { Button } from "@/components/ui/button"
+import { Accent, Caption, Heading, Text } from "@/components/typography/typography"
+import { RubberButton } from "@/components/ui/rubber-button"
 import { Reveal } from "@/components/motion/reveal"
 import { FeatureGrid } from "@/components/sections/feature-grid"
 import { ProcessTimeline } from "@/components/sections/timeline"
@@ -76,27 +77,20 @@ export default function WebDevelopmentPage() {
       <JsonLd data={serviceJsonLd(webService)} />
       <JsonLd data={faqJsonLd(faqItems)} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Web Development" }]} />
-      </Section>
-
-      <Section glow="top">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <Caption className="text-primary">Web Development in Nigeria</Caption>
-            <Heading level={1} size="xl" className="mt-4">
-              Websites and Web Apps Built to Perform
-            </Heading>
-            <Text tone="muted" className="mt-4">
-              MB CoreX is a web development company in Nigeria building fast, responsive websites and web
-              applications — from marketing sites to fully custom platforms.
-            </Text>
-            <Button variant="cta" size="lg" className="mt-8" render={<Link href="/contact" />}>
-              Book a Consultation
-            </Button>
-          </div>
-        </Reveal>
-      </Section>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Web Development" }]} />}
+        eyebrow="Web Development in Nigeria"
+        title={[
+          "Websites and web apps",
+          <Accent key="accent" tone="brand">built to perform.</Accent>,
+        ]}
+        description="MB CoreX is a web development company in Nigeria building fast, responsive websites and web applications — from marketing sites to fully custom platforms."
+        actions={[{ label: "Book a Consultation", href: "/contact" }]}
+        image={{
+          srcLight: "/images/UIUX.png",
+          position: "55% center",
+        }}
+      />
 
       <Section>
         <Reveal>
@@ -120,9 +114,9 @@ export default function WebDevelopmentPage() {
               Reene Medical Diagnostics had no professional digital presence. We built a responsive,
               healthcare-appropriate corporate website that earns trust from the first visit.
             </Text>
-            <Button variant="outline" size="lg" className="mt-2" render={<Link href="/portfolio/reene-medical-diagnostics" />}>
+            <RubberButton variant="outline" size="lg" className="mt-2" render={<Link href="/portfolio/reene-medical-diagnostics" />}>
               View the Case Study
-            </Button>
+            </RubberButton>
           </div>
         </Reveal>
       </Section>

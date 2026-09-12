@@ -3,10 +3,11 @@ import Link from "next/link"
 import { Puzzle } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
+import { PageHero } from "@/components/sections/page-hero"
 import { SplitLayout } from "@/components/layout/split-layout"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
-import { Button } from "@/components/ui/button"
+import { Accent, Caption, Heading, Text } from "@/components/typography/typography"
+import { RubberButton } from "@/components/ui/rubber-button"
 import { Reveal } from "@/components/motion/reveal"
 import { FeatureGrid } from "@/components/sections/feature-grid"
 import { ProcessTimeline } from "@/components/sections/timeline"
@@ -76,27 +77,20 @@ export default function CustomSoftwarePage() {
       <JsonLd data={serviceJsonLd(customService)} />
       <JsonLd data={faqJsonLd(faqItems)} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Custom Software" }]} />
-      </Section>
-
-      <Section glow="top">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <Caption className="text-primary">Custom Software Development in Nigeria</Caption>
-            <Heading level={1} size="xl" className="mt-4">
-              Software Built Around How Your Business Actually Works
-            </Heading>
-            <Text tone="muted" className="mt-4">
-              MB CoreX is a custom software development company in Nigeria — bespoke, enterprise-grade
-              software, not a generic template forced to fit.
-            </Text>
-            <Button variant="cta" size="lg" className="mt-8" render={<Link href="/contact" />}>
-              Book a Consultation
-            </Button>
-          </div>
-        </Reveal>
-      </Section>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Custom Software" }]} />}
+        eyebrow="Custom Software Development in Nigeria"
+        title={[
+          "Software built around how",
+          <Accent key="accent" tone="brand">your business actually works.</Accent>,
+        ]}
+        description="MB CoreX is a custom software development company in Nigeria — bespoke, enterprise-grade software, not a generic template forced to fit."
+        actions={[{ label: "Book a Consultation", href: "/contact" }]}
+        image={{
+          srcLight: "/images/Software Engineering.png",
+          position: "58% center",
+        }}
+      />
 
       <Section>
         <Reveal>
@@ -148,9 +142,9 @@ export default function CustomSoftwarePage() {
               Batamart replaced informal, chat-based campus trading with a structured marketplace — vendor
               management, secure payments and search, built on an architecture ready to scale.
             </Text>
-            <Button variant="outline" size="lg" className="mt-2" render={<Link href="/portfolio/batamart" />}>
+            <RubberButton variant="outline" size="lg" className="mt-2" render={<Link href="/portfolio/batamart" />}>
               View the Case Study
-            </Button>
+            </RubberButton>
           </div>
         </Reveal>
       </Section>

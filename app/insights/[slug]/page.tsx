@@ -78,7 +78,7 @@ export default async function BlogPostPage({ params }: Props) {
         })}
       />
 
-      <Section spacing="tight">
+      <Section spacing="tight" className="pt-32 lg:pt-40">
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },

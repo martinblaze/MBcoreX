@@ -77,7 +77,7 @@ export function SearchDialog() {
       <Button
         variant="outline"
         size="sm"
-        className="hidden text-muted-foreground sm:inline-flex"
+        className="hidden text-muted-foreground 2xl:inline-flex"
         onClick={() => setOpen(true)}
       >
         <SearchIcon className="size-4" aria-hidden="true" />
@@ -87,7 +87,7 @@ export function SearchDialog() {
           <Kbd>K</Kbd>
         </KbdGroup>
       </Button>
-      <Button variant="ghost" size="icon" aria-label="Search the site" className="sm:hidden" onClick={() => setOpen(true)}>
+      <Button variant="ghost" size="icon" aria-label="Search the site" className="2xl:hidden" onClick={() => setOpen(true)}>
         <SearchIcon className="size-5" aria-hidden="true" />
       </Button>
 

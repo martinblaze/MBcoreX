@@ -3,9 +3,10 @@ import Link from "next/link"
 import { Bell, Repeat, TrendingDown } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
+import { PageHero } from "@/components/sections/page-hero"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
-import { Button } from "@/components/ui/button"
+import { Accent, Caption, Heading, Text } from "@/components/typography/typography"
+import { RubberButton } from "@/components/ui/rubber-button"
 import { Reveal } from "@/components/motion/reveal"
 import { FeatureGrid } from "@/components/sections/feature-grid"
 import { ProcessTimeline } from "@/components/sections/timeline"
@@ -74,27 +75,20 @@ export default function BusinessAutomationPage() {
       <JsonLd data={serviceJsonLd(automationService)} />
       <JsonLd data={faqJsonLd(faqItems)} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Business Automation" }]} />
-      </Section>
-
-      <Section glow="top">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <Caption className="text-primary">Business Automation in Nigeria</Caption>
-            <Heading level={1} size="xl" className="mt-4">
-              Automate the Work That&apos;s Slowing Your Team Down
-            </Heading>
-            <Text tone="muted" className="mt-4">
-              MB CoreX builds business automation software in Nigeria — workflow and process automation
-              that frees up staff time for higher-value work.
-            </Text>
-            <Button variant="cta" size="lg" className="mt-8" render={<Link href="/contact" />}>
-              Book a Consultation
-            </Button>
-          </div>
-        </Reveal>
-      </Section>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Business Automation" }]} />}
+        eyebrow="Business Automation in Nigeria"
+        title={[
+          "Automate the work",
+          <Accent key="accent" tone="brand">slowing your team down.</Accent>,
+        ]}
+        description="MB CoreX builds business automation software in Nigeria — workflow and process automation that frees up staff time for higher-value work."
+        actions={[{ label: "Book a Consultation", href: "/contact" }]}
+        image={{
+          srcLight: "/images/BusinessTechnology.png",
+          position: "55% center",
+        }}
+      />
 
       <Section>
         <Reveal>
@@ -130,9 +124,9 @@ export default function BusinessAutomationPage() {
               catches revenue leakage automatically — automation woven into the actual workflow, not
               bolted on.
             </Text>
-            <Button variant="outline" size="lg" className="mt-2" render={<Link href="/portfolio/diagsync" />}>
+            <RubberButton variant="outline" size="lg" className="mt-2" render={<Link href="/portfolio/diagsync" />}>
               View the Case Study
-            </Button>
+            </RubberButton>
           </div>
         </Reveal>
       </Section>

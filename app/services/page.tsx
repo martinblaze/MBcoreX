@@ -3,13 +3,12 @@ import Link from "next/link"
 import { Check, FileText } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
-import { BackgroundHero } from "@/components/layout/background-hero"
-import { ThemedImage } from "@/components/layout/themed-image"
+import { PageHero } from "@/components/sections/page-hero"
 import { Grid } from "@/components/layout/grid"
 import { Divider } from "@/components/layout/divider"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
-import { Button } from "@/components/ui/button"
+import { Accent, Caption, Heading, Text } from "@/components/typography/typography"
+import { RubberButton } from "@/components/ui/rubber-button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Reveal, StaggerItem } from "@/components/motion/reveal"
 import { FAQAccordion } from "@/components/sections/faq-accordion"
@@ -45,36 +44,20 @@ export default function ServicesPage() {
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Services", path: "/services" }])} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
-      </Section>
-
-      <BackgroundHero
-        scrim="light"
-        background={
-          <ThemedImage
-            srcLight="/images/SolutionsLightmode.png"
-            srcDark="/images/Solutions.jpg"
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            className="object-cover object-[62%_center]"
-          />
-        }
-      >
-        <Reveal>
-          <Caption className="text-primary">Our Services</Caption>
-          <Heading level={1} size="xl" className="mt-4 max-w-2xl">
-            End-to-End Solutions For Your Business
-          </Heading>
-          <Text tone="muted" className="mt-4 max-w-xl">
-            We provide a wide range of services to help businesses build, secure and scale their digital
-            presence — organized below by discipline.
-          </Text>
-        </Reveal>
-      </BackgroundHero>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} />}
+        eyebrow="Our Services"
+        title={[
+          "End-to-end solutions",
+          <Accent key="accent" tone="brand">for your business.</Accent>,
+        ]}
+        description="We provide a wide range of services to help businesses build, secure and scale their digital presence — organized below by discipline."
+        image={{
+          srcLight: "/images/SolutionsLightmode.png",
+          srcDark: "/images/Solutions.jpg",
+          position: "62% center",
+        }}
+      />
 
       {serviceCategories.map((category, categoryIndex) => {
         const categoryServices = getServicesByCategory(category)
@@ -142,13 +125,13 @@ export default function ServicesPage() {
 
                             <div className="mt-auto flex flex-wrap items-center gap-3">
                               {service.href && (
-                                <Button variant="outline" render={<Link href={service.href} />}>
+                                <RubberButton variant="outline" render={<Link href={service.href} />}>
                                   Learn More
-                                </Button>
+                                </RubberButton>
                               )}
-                              <Button variant="outline" render={<Link href="/contact" />}>
+                              <RubberButton variant="outline" render={<Link href="/contact" />}>
                                 {ctaCopy.primary}
-                              </Button>
+                              </RubberButton>
                             </div>
                           </CardContent>
                         </Card>

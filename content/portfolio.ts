@@ -23,12 +23,22 @@ export type PortfolioProject = {
   results: string[]
   before: string[]
   after: string[]
+  /** Public URL of the running product — used for the live embed and the outbound link. */
   livePreviewHref?: string
+  /**
+   * Whether the live site permits being framed. A site that sends
+   * `X-Frame-Options` or a restrictive CSP `frame-ancestors` renders as a
+   * blank box with no JS-detectable error, so this has to be declared rather
+   * than probed. Set false to fall back to the screenshot carousel.
+   */
+  embeddable?: boolean
 }
 
 export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "diagsync",
+    livePreviewHref: "https://diagsync.vercel.app/",
+    embeddable: true,
     title: "DiagSync",
     seoTitle: "How We Built a Laboratory Management System for a Diagnostics Lab — DiagSync",
     category: "Laboratory Management System",
@@ -72,6 +82,8 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     slug: "batamart",
+    livePreviewHref: "https://www.batamart.com/",
+    embeddable: true,
     title: "Batamart",
     seoTitle: "How We Built a Secure Student Marketplace Platform — Batamart",
     category: "Student Marketplace Platform",
@@ -116,6 +128,8 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     slug: "reene-medical-diagnostics",
+    livePreviewHref: "https://reenemedicaldiagnostics.com/",
+    embeddable: true,
     title: "Reene Medical Diagnostics",
     seoTitle: "Building a Trust-First Corporate Website for a Healthcare Provider — Reene Medical Diagnostics",
     category: "Corporate Website",

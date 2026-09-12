@@ -69,7 +69,7 @@ export function BackgroundHero({
   const scrimStyle = scrimClasses[scrim]
 
   return (
-    <Section spacing="none" fullBleed className={cn("relative isolate overflow-hidden", className)}>
+    <Section spacing="none" fullBleed className={cn("grain relative isolate overflow-hidden", className)}>
       <div className="absolute inset-0 -z-20">{background}</div>
       <div className={cn("absolute inset-0 -z-10 hidden lg:block", scrimStyle[align])} />
       <div className={cn("absolute inset-0 -z-10 hidden lg:block", scrimStyle.vertical)} />
@@ -80,7 +80,7 @@ export function BackgroundHero({
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
         <div
           className={cn(
-            "flex items-center py-20 lg:py-28",
+            "flex items-center py-28 lg:py-40",
             align === "end" && "lg:justify-end",
             minHeightClass,
             fullViewport && "min-h-[calc(100svh-4rem)] py-0 pt-24 pb-16 lg:pt-32"
