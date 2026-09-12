@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
 
 import { Section } from "@/components/layout/section"
+import { PageHero } from "@/components/sections/page-hero"
 import { SplitLayout } from "@/components/layout/split-layout"
 import { BackgroundHero } from "@/components/layout/background-hero"
 import { ThemedImage } from "@/components/layout/themed-image"
 import { Grid } from "@/components/layout/grid"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Display, Heading, Text, Caption } from "@/components/typography/typography"
+import { Accent, Heading, Text } from "@/components/typography/typography"
 import { Reveal } from "@/components/motion/reveal"
 import { StatsBand } from "@/components/sections/stats-band"
 import { FeatureGrid } from "@/components/sections/feature-grid"
@@ -32,37 +33,20 @@ export default function AboutPage() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])} />
       <JsonLd data={personJsonLd(founder)} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
-      </Section>
-
-      <BackgroundHero
-        background={
-          <ThemedImage
-            srcLight="/images/Background2Lightmode.png"
-            srcDark="/images/Background2.png"
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            className="object-cover object-[72%_center]"
-          />
-        }
-      >
-        <Reveal>
-          <Caption className="text-primary">About MB CoreX</Caption>
-          <Display as="h1" size="lg" className="mt-4">
-            Building Technology.{" "}
-            <span className="text-primary">Securing Futures.</span>
-          </Display>
-          <Text tone="muted" className="mt-6 max-w-lg">
-            Technology is more than code. It&apos;s about solving real problems, protecting valuable data, and
-            empowering people to do more. At MB CoreX, we combine innovation and security to deliver solutions
-            that drive growth and build trust.
-          </Text>
-        </Reveal>
-      </BackgroundHero>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />}
+        eyebrow="About MB CoreX"
+        title={[
+          "Building technology.",
+          <Accent key="accent" tone="brand">Securing futures.</Accent>,
+        ]}
+        description="Technology is more than code. It&apos;s about solving real problems, protecting valuable data, and empowering people to do more."
+        image={{
+          srcLight: "/images/Background2Lightmode.png",
+          srcDark: "/images/Background2.png",
+          position: "72% center",
+        }}
+      />
 
       <Section spacing="tight">
         <StatsBand stats={companyStats} />

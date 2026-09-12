@@ -13,12 +13,14 @@ type PolymorphicProps<E extends ElementType> = {
 /* Hero-level headlines only — one per page. Pair with responsive size overrides */
 /* e.g. `size="lg"` on mobile via className, `md:text-display-2xl` for desktop. */
 
-const displayVariants = cva("font-heading font-semibold text-balance text-foreground", {
+const displayVariants = cva("font-display font-normal text-balance text-foreground", {
   variants: {
     size: {
-      "2xl": "text-display-lg md:text-display-2xl",
-      xl: "text-4xl md:text-display-xl",
-      lg: "text-3xl md:text-display-lg",
+      // The type scale is already fluid (clamp), so these need no breakpoint
+      // variants — one token covers 360px through 4K.
+      "2xl": "text-display-2xl",
+      xl: "text-display-xl",
+      lg: "text-display-lg",
     },
   },
   defaultVariants: { size: "2xl" },
@@ -66,20 +68,58 @@ const levelDefaultSize: Record<1 | 2 | 3 | 4 | 5 | 6, keyof typeof headingSizes>
 type HeadingProps = {
   level?: 1 | 2 | 3 | 4 | 5 | 6
   size?: keyof typeof headingSizes
+  /** Override the automatic face pick — e.g. force the grotesk on a serif-scale heading. */
+  font?: "display" | "sans"
   className?: string
   children?: ReactNode
 } & React.ComponentPropsWithoutRef<"h1" | "h2" | "h3" | "h4" | "h5" | "h6">
 
-export function Heading({ level = 2, size, className, children, ...props }: HeadingProps) {
+/**
+ * Face is chosen by *visual* size, not semantic level: section-scale headings
+ * (xl/lg) take the editorial serif, while UI-scale ones (card titles, list
+ * headers) stay on the grotesk so dense interface text keeps its clarity.
+ */
+export function Heading({ level = 2, size, font, className, children, ...props }: HeadingProps) {
   const Comp = `h${level}` as ElementType
   const resolvedSize = size ?? levelDefaultSize[level]
+  const resolvedFont = font ?? (resolvedSize === "xl" || resolvedSize === "lg" ? "display" : "sans")
+
   return (
     <Comp
-      className={cn("font-heading font-semibold text-balance text-foreground", headingSizes[resolvedSize], className)}
+      className={cn(
+        "text-balance text-foreground",
+        resolvedFont === "display"
+          ? "font-display font-normal"
+          : "font-heading font-semibold tracking-tight",
+        headingSizes[resolvedSize],
+        className
+      )}
       {...props}
     >
       {children}
     </Comp>
+  )
+}
+
+/* ----------------------------------- Accent ---------------------------------- */
+/* The emphasis cut inside a display headline. Instrument Serif's italic is a  */
+/* genuinely different drawing (not a slant), so switching to it mid-sentence  */
+/* reads as typesetting rather than as a highlight effect bolted on.           */
+
+export function Accent({
+  children,
+  tone = "default",
+  className,
+}: {
+  children: ReactNode
+  /** `brand` tints it blue; `default` keeps it in the text colour and lets the italic do the work. */
+  tone?: "default" | "brand"
+  className?: string
+}) {
+  return (
+    <em className={cn("font-display italic", tone === "brand" && "text-primary", className)}>
+      {children}
+    </em>
   )
 }
 
@@ -127,7 +167,10 @@ export function Caption({ as, className, children, ...props }: PolymorphicProps<
   const Comp = as || "span"
   return (
     <Comp
-      className={cn("text-caption font-medium uppercase text-muted-foreground", className)}
+      className={cn(
+        "text-caption font-medium uppercase text-muted-foreground",
+        className
+      )}
       {...props}
     >
       {children}

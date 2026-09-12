@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 
 import { Section } from "@/components/layout/section"
+import { PageHero } from "@/components/sections/page-hero"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
-import { Reveal } from "@/components/motion/reveal"
+import { Accent } from "@/components/typography/typography"
 import { CTABanner } from "@/components/sections/cta-banner"
 import { PortfolioFilterGrid } from "@/components/sections/portfolio/portfolio-filter-grid"
 import { JsonLd } from "@/components/seo/json-ld"
@@ -23,21 +23,20 @@ export default function PortfolioPage() {
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Portfolio", path: "/portfolio" }])} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Portfolio" }]} />
-      </Section>
-
-      <Section spacing="tight">
-        <Reveal>
-          <Caption className="text-primary">Our Work</Caption>
-          <Heading level={1} size="xl" className="mt-4 max-w-2xl">
-            Solutions We&apos;ve Built
-          </Heading>
-          <Text tone="muted" className="mt-4 max-w-xl">
-            We build products that solve real problems and create real impact — filter by category to explore.
-          </Text>
-        </Reveal>
-      </Section>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Portfolio" }]} />}
+        eyebrow="Our Work"
+        title={[
+          "Solutions",
+          <Accent key="accent" tone="brand">we&apos;ve built.</Accent>,
+        ]}
+        description="We build products that solve real problems and create real impact — filter by category to explore."
+        image={{
+          srcLight: "/images/SolutionsLightmode.png",
+          srcDark: "/images/Solutions.jpg",
+          position: "62% center",
+        }}
+      />
 
       <Section>
         <PortfolioFilterGrid projects={portfolioProjects} />

@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { Section } from "@/components/layout/section"
+import { PageHero } from "@/components/sections/page-hero"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
 import { Reveal } from "@/components/motion/reveal"
 import { CTABanner } from "@/components/sections/cta-banner"
 import { InsightsBrowser, CategoryChips } from "@/components/blog/insights-browser"
@@ -47,21 +47,16 @@ export default async function InsightsCategoryPage({ params }: Props) {
         ])}
       />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Insights", href: "/insights" }, { label: category }]} />
-      </Section>
-
-      <Section spacing="tight">
-        <Reveal>
-          <Caption className="text-primary">Category</Caption>
-          <Heading level={1} size="xl" className="mt-4 max-w-2xl">
-            {category}
-          </Heading>
-          <Text tone="muted" className="mt-4 max-w-xl">
-            {posts.length} article{posts.length === 1 ? "" : "s"} on {category.toLowerCase()}.
-          </Text>
-        </Reveal>
-      </Section>
+      <PageHero
+        breadcrumbs={
+          <Breadcrumbs
+            items={[{ label: "Home", href: "/" }, { label: "Insights", href: "/insights" }, { label: category }]}
+          />
+        }
+        eyebrow="Category"
+        title={[category]}
+        description={`${posts.length} article${posts.length === 1 ? "" : "s"} on ${category.toLowerCase()}.`}
+      />
 
       <Section spacing="tight">
         <Reveal>

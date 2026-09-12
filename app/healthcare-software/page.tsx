@@ -3,10 +3,11 @@ import Link from "next/link"
 import { ArrowUpRight, FileLock, Fingerprint, ShieldCheck } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
+import { PageHero } from "@/components/sections/page-hero"
 import { Grid } from "@/components/layout/grid"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
-import { Button } from "@/components/ui/button"
+import { Accent, Caption, Heading, Text } from "@/components/typography/typography"
+import { RubberButton } from "@/components/ui/rubber-button"
 import { Reveal } from "@/components/motion/reveal"
 import { FeatureGrid } from "@/components/sections/feature-grid"
 import { ProcessTimeline } from "@/components/sections/timeline"
@@ -81,27 +82,20 @@ export default function HealthcareSoftwarePage() {
       <JsonLd data={healthcareServiceJsonLd} />
       <JsonLd data={faqJsonLd(faqItems)} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Healthcare Software" }]} />
-      </Section>
-
-      <Section glow="top">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <Caption className="text-primary">Healthcare Software in Nigeria</Caption>
-            <Heading level={1} size="xl" className="mt-4">
-              Software Built for the Realities of Healthcare Data
-            </Heading>
-            <Text tone="muted" className="mt-4">
-              MB CoreX is a healthcare software developer in Nigeria — laboratory systems, clinic websites
-              and patient-data software built with security as a first-class requirement.
-            </Text>
-            <Button variant="cta" size="lg" className="mt-8" render={<Link href="/contact" />}>
-              Book a Consultation
-            </Button>
-          </div>
-        </Reveal>
-      </Section>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Healthcare Software" }]} />}
+        eyebrow="Healthcare Software in Nigeria"
+        title={[
+          "Software built for the realities",
+          <Accent key="accent" tone="brand">of healthcare data.</Accent>,
+        ]}
+        description="MB CoreX is a healthcare software developer in Nigeria — laboratory systems, clinic websites and patient-data software built with security as a first-class requirement."
+        actions={[{ label: "Book a Consultation", href: "/contact" }]}
+        image={{
+          srcLight: "/images/reenemedicallandingpage.png",
+          position: "50% top",
+        }}
+      />
 
       <Section>
         <Reveal>
@@ -140,12 +134,12 @@ export default function HealthcareSoftwarePage() {
               healthcare providers who couldn&apos;t afford to get data handling wrong.
             </Text>
             <div className="mt-2 flex flex-wrap justify-center gap-4">
-              <Button variant="outline" size="lg" render={<Link href="/portfolio/diagsync" />}>
+              <RubberButton variant="outline" size="lg" render={<Link href="/portfolio/diagsync" />}>
                 DiagSync Case Study <ArrowUpRight className="size-4" aria-hidden="true" />
-              </Button>
-              <Button variant="outline" size="lg" render={<Link href="/portfolio/reene-medical-diagnostics" />}>
+              </RubberButton>
+              <RubberButton variant="outline" size="lg" render={<Link href="/portfolio/reene-medical-diagnostics" />}>
                 Reene Medical Case Study <ArrowUpRight className="size-4" aria-hidden="true" />
-              </Button>
+              </RubberButton>
             </div>
           </div>
         </Reveal>

@@ -1,14 +1,13 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { Award, Fingerprint, Lock, Network, Radar, ScanEye, ShieldCheck } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
+import { PageHero } from "@/components/sections/page-hero"
 import { SplitLayout } from "@/components/layout/split-layout"
 import { BackgroundHero } from "@/components/layout/background-hero"
 import { ThemedImage } from "@/components/layout/themed-image"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
-import { Button } from "@/components/ui/button"
+import { Accent, Heading, Text } from "@/components/typography/typography"
 import { Reveal } from "@/components/motion/reveal"
 import { FeatureGrid } from "@/components/sections/feature-grid"
 import { ProcessTimeline } from "@/components/sections/timeline"
@@ -76,40 +75,21 @@ export default function CybersecurityPage() {
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Cybersecurity", path: "/cybersecurity" }])} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Cybersecurity" }]} />
-      </Section>
-
-      <BackgroundHero
-        minHeightClass="lg:min-h-[620px]"
-        scrim="light"
-        background={
-          <ThemedImage
-            srcLight="/images/Background3Lightmode.png"
-            srcDark="/images/Background3.png"
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            className="object-cover object-[58%_center]"
-          />
-        }
-      >
-        <Reveal>
-          <Caption className="text-primary">Cybersecurity</Caption>
-          <Heading level={1} size="xl" className="mt-4">
-            Security Built Into Everything
-          </Heading>
-          <Text tone="muted" className="mt-4 max-w-md">
-            We help businesses implement and align with industry-standard security frameworks to protect
-            what matters most — applied as practice, built into how we develop, not sold as a certificate.
-          </Text>
-          <Button variant="cta" size="lg" className="mt-8" render={<Link href="/contact" />}>
-            Secure Your Business
-          </Button>
-        </Reveal>
-      </BackgroundHero>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Cybersecurity" }]} />}
+        eyebrow="Cybersecurity"
+        title={[
+          "Security built into",
+          <Accent key="accent" tone="brand">everything.</Accent>,
+        ]}
+        description="We help businesses implement and align with industry-standard security frameworks to protect what matters most — applied as practice, built into how we develop."
+        actions={[{ label: "Secure Your Business", href: "/contact" }]}
+        image={{
+          srcLight: "/images/Background3Lightmode.png",
+          srcDark: "/images/Background3.png",
+          position: "58% center",
+        }}
+      />
 
       <Section>
         <Reveal>

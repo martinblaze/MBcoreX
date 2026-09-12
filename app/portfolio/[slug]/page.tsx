@@ -7,12 +7,13 @@ import { Section } from "@/components/layout/section"
 import { Grid } from "@/components/layout/grid"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Heading, Text, Caption } from "@/components/typography/typography"
-import { Button } from "@/components/ui/button"
+import { RubberButton } from "@/components/ui/rubber-button"
 import { Reveal } from "@/components/motion/reveal"
 import { TechStackBadges } from "@/components/sections/tech-stack"
 import { CTABanner } from "@/components/sections/cta-banner"
 import { StickyMobileCta } from "@/components/sections/sticky-mobile-cta"
 import { ProjectGallery } from "@/components/sections/portfolio/project-gallery"
+import { LivePreview } from "@/components/sections/live-preview"
 import { ProcessTimeline } from "@/components/sections/timeline"
 import { TestimonialCard } from "@/components/cards/testimonial-card"
 import { JsonLd } from "@/components/seo/json-ld"
@@ -48,6 +49,9 @@ export default async function PortfolioDetailPage({ params }: Props) {
   const otherProjects = portfolioProjects.filter((item) => item.slug !== project.slug)
   const { previous, next } = getAdjacentProjects(project.slug)
   const testimonial = testimonials.find((item) => item.company === project.title)
+  // A live URL is not enough — the target must also permit framing, or the
+  // browser renders a blank box with no way for us to detect it.
+  const canEmbed = Boolean(project.livePreviewHref) && project.embeddable !== false
 
   const processEntries = [
     { title: "Discovery", description: project.discoveryProcess },
@@ -67,7 +71,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
       />
       <JsonLd data={caseStudyJsonLd(project)} />
 
-      <Section spacing="tight">
+      <Section spacing="tight" className="pt-32 lg:pt-40">
         <Breadcrumbs
           items={[{ label: "Home", href: "/" }, { label: "Portfolio", href: "/portfolio" }, { label: project.title }]}
         />
@@ -86,30 +90,47 @@ export default async function PortfolioDetailPage({ params }: Props) {
           </Text>
           <div className="mt-6 flex flex-wrap items-center gap-4">
             {project.livePreviewHref && (
-              <Button variant="cta" render={<a href={project.livePreviewHref} target="_blank" rel="noopener noreferrer" />}>
+              <RubberButton variant="cta" render={<a href={project.livePreviewHref} target="_blank" rel="noopener noreferrer" />}>
                 Live Preview <ArrowUpRight className="size-4" aria-hidden="true" />
-              </Button>
+              </RubberButton>
             )}
-            <Button variant="outline" render={<Link href="/contact" />}>
+            <RubberButton variant="outline" render={<Link href="/contact" />}>
               Start a Similar Project
-            </Button>
+            </RubberButton>
           </div>
         </Reveal>
       </Section>
 
+      {/* Live embed where the product allows framing; otherwise the screenshot
+          carousel, which shows more of the product than a single frozen frame
+          would. */}
       <Section spacing="tight">
         <Reveal>
-          <div className="mx-auto mb-8 max-w-2xl text-center">
+          <div className="mx-auto mb-10 max-w-2xl text-center">
             <Heading level={2} size="lg">
-              A Closer Look
+              {canEmbed ? "Try It Live" : "A Closer Look"}
             </Heading>
             <Text tone="muted" className="mt-2">
-              Real screens from {project.title}, in production.
+              {canEmbed
+                ? `${project.title} running in production — click into the screen and use it right here.`
+                : `Real screens from ${project.title}, in production.`}
             </Text>
           </div>
         </Reveal>
         <Reveal variant="fade">
-          <ProjectGallery images={project.gallery} alt={project.title} />
+          {canEmbed ? (
+            <div className="mx-auto max-w-5xl">
+              <LivePreview
+                src={project.livePreviewHref!}
+                name={project.title}
+                fallbackImage={project.gallery[0] ?? project.image}
+                // The embed is the point of this section, so skip the shield.
+                eager
+              />
+            </div>
+          ) : (
+            <ProjectGallery images={project.gallery} alt={project.title} />
+          )}
         </Reveal>
       </Section>
 

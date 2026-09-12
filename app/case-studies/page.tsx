@@ -1,12 +1,11 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 
 import { Section } from "@/components/layout/section"
-import { BackgroundHero } from "@/components/layout/background-hero"
+import { PageHero } from "@/components/sections/page-hero"
 import { Grid } from "@/components/layout/grid"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
+import { Accent } from "@/components/typography/typography"
 import { Reveal, StaggerItem } from "@/components/motion/reveal"
 import { CaseStudyCard } from "@/components/cards/case-study-card"
 import { StatsBand } from "@/components/sections/stats-band"
@@ -29,34 +28,19 @@ export default function CaseStudiesPage() {
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Case Studies", path: "/case-studies" }])} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Case Studies" }]} />
-      </Section>
-
-      <BackgroundHero
-        scrim="light"
-        background={
-          <Image
-            src="/images/RealProblemsRealSolutions.png"
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            className="object-cover object-[62%_center]"
-          />
-        }
-      >
-        <Reveal>
-          <Caption className="text-primary">Case Studies</Caption>
-          <Heading level={1} size="xl" className="mt-4 max-w-2xl">
-            Real Problems. Real Solutions.
-          </Heading>
-          <Text tone="muted" className="mt-4 max-w-xl">
-            We don&apos;t just build. See how we take businesses from challenges to measurable results.
-          </Text>
-        </Reveal>
-      </BackgroundHero>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Case Studies" }]} />}
+        eyebrow="Case Studies"
+        title={[
+          "Real problems.",
+          <Accent key="accent" tone="brand">Real solutions.</Accent>,
+        ]}
+        description="We don&apos;t just build. See how we take businesses from challenges to measurable results."
+        image={{
+          srcLight: "/images/RealProblemsRealSolutions.png",
+          position: "62% center",
+        }}
+      />
 
       <Section spacing="tight">
         <StatsBand stats={companyStats} />

@@ -1,5 +1,4 @@
 import { Counter } from "@/components/motion/counter"
-import { Text } from "@/components/typography/typography"
 import { cn } from "@/lib/utils"
 
 export type StatCardProps = {
@@ -10,19 +9,19 @@ export type StatCardProps = {
   className?: string
 }
 
-/** A single count-up stat. StatsBand renders these in a row (Projects Delivered, Years of Experience, etc.). */
+/** A single count-up stat. StatsBand renders these in a hairline-ruled row. */
 export function StatCard({ value, suffix = "", prefix = "", label, className }: StatCardProps) {
   return (
-    <div className={cn("flex flex-col gap-1", className)}>
+    <div className={cn("flex flex-col gap-3", className)}>
       <Counter
         value={value}
         prefix={prefix}
         suffix={suffix}
-        className="font-heading text-heading-xl font-semibold text-primary md:text-display-lg"
+        // Serif numerals at display scale — the figures are the headline here,
+        // so they take the display face rather than the UI grotesk.
+        className="font-display text-display-lg font-normal text-foreground tabular-nums"
       />
-      <Text size="sm" tone="muted">
-        {label}
-      </Text>
+      <span className="text-caption font-medium uppercase text-muted-foreground">{label}</span>
     </div>
   )
 }

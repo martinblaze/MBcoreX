@@ -2,10 +2,9 @@ import type { Metadata } from "next"
 import { MapPin } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
-import { BackgroundHero } from "@/components/layout/background-hero"
-import { ThemedImage } from "@/components/layout/themed-image"
+import { PageHero } from "@/components/sections/page-hero"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
+import { Accent, Heading, Text } from "@/components/typography/typography"
 import { Reveal } from "@/components/motion/reveal"
 import { ContactSection } from "@/components/sections/contact-section"
 import { FAQAccordion } from "@/components/sections/faq-accordion"
@@ -34,34 +33,20 @@ export default function ContactPage() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])} />
       <JsonLd data={faqJsonLd(contactFaq)} />
 
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
-      </Section>
-
-      <BackgroundHero
-        background={
-          <ThemedImage
-            srcLight="/images/Let'sBuildSomethingExceptionalLightmode.png"
-            srcDark="/images/Let'sBuildSomethingExceptional.png"
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        }
-      >
-        <Reveal>
-          <Caption className="text-primary">Contact</Caption>
-          <Heading level={1} size="xl" className="mt-4 max-w-2xl">
-            Let&apos;s Build Something Exceptional
-          </Heading>
-          <Text tone="muted" className="mt-4 max-w-xl">
-            Have a project in mind or need advice? We&apos;d love to hear from you.
-          </Text>
-        </Reveal>
-      </BackgroundHero>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />}
+        eyebrow="Contact"
+        title={[
+          "Let&apos;s build something",
+          <Accent key="accent" tone="brand">exceptional.</Accent>,
+        ]}
+        description="Have a project in mind or need advice? We&apos;d love to hear from you."
+        image={{
+          srcLight: "/images/Let'sBuildSomethingExceptionalLightmode.png",
+          srcDark: "/images/Let'sBuildSomethingExceptional.png",
+          position: "center",
+        }}
+      />
 
       <ContactSection
         heading="Send Us a Message"

@@ -1,12 +1,10 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import { Briefcase } from "lucide-react"
 
 import { Section } from "@/components/layout/section"
-import { BackgroundHero } from "@/components/layout/background-hero"
+import { PageHero } from "@/components/sections/page-hero"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Heading, Text, Caption } from "@/components/typography/typography"
-import { Reveal } from "@/components/motion/reveal"
+import { Heading } from "@/components/typography/typography"
 import { FeatureGrid } from "@/components/sections/feature-grid"
 import { EmptyState } from "@/components/feedback/states"
 import { CTABanner } from "@/components/sections/cta-banner"
@@ -24,33 +22,18 @@ export const metadata: Metadata = buildMetadata({
 export default function CareersPage() {
   return (
     <>
-      <Section spacing="tight">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Careers" }]} />
-      </Section>
-      <BackgroundHero
-        background={
-          <Image
-            src="/images/BuildWithUs.png"
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        }
-      >
-        <Reveal>
-          <Caption className="text-primary">Careers</Caption>
-          <Heading level={1} size="xl" className="mt-4 max-w-2xl">
-            Build With Us
-          </Heading>
-          <Text tone="muted" className="mt-4 max-w-xl">
-            MB CoreX is a growing practice. We work with collaborators who share the same standard: engineering
-            quality and security are not optional extras.
-          </Text>
-        </Reveal>
-      </BackgroundHero>
+      <PageHero
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Careers" }]} />}
+        eyebrow="Careers"
+        title={[
+          "Build with us.",
+        ]}
+        description="MB CoreX is a growing practice. We work with collaborators who share the same standard: engineering quality and security are not optional extras."
+        image={{
+          srcLight: "/images/BuildWithUs.png",
+          position: "center",
+        }}
+      />
       <Section>
         <Heading level={2} size="lg" className="mb-8">
           What We Value
