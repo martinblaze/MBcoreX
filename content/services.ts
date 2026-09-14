@@ -4,6 +4,7 @@ import {
   Code2,
   Crown,
   Database,
+  Globe,
   LayoutDashboard,
   Lock,
   Network,
@@ -29,11 +30,20 @@ export type Service = {
   deliverables: string[]
   /** Dedicated SEO landing page for this service, if one exists — falls back to the `/services#slug` anchor. */
   href?: string
+  /**
+   * Indicative project band in naira, used to set expectations on the contact
+   * form before a real scope conversation. A range, never a quote — the
+   * actual number always comes from scope.
+   */
+  priceFrom: number
+  priceTo: number
 }
 
 export const services: Service[] = [
   {
     slug: "custom-software",
+    priceFrom: 1500000,
+    priceTo: 8000000,
     category: "Software Engineering",
     icon: Code2,
     title: "Custom Software",
@@ -46,6 +56,8 @@ export const services: Service[] = [
   },
   {
     slug: "enterprise-systems",
+    priceFrom: 5000000,
+    priceTo: 25000000,
     category: "Software Engineering",
     icon: LayoutDashboard,
     title: "Enterprise Systems",
@@ -57,6 +69,8 @@ export const services: Service[] = [
   },
   {
     slug: "saas-development",
+    priceFrom: 2500000,
+    priceTo: 12000000,
     category: "Software Engineering",
     icon: Rocket,
     title: "SaaS Development",
@@ -68,7 +82,23 @@ export const services: Service[] = [
     deliverables: ["MVP build", "Billing integration", "Scalability & security review"],
   },
   {
+    slug: "web-development",
+    priceFrom: 150000,
+    priceTo: 2500000,
+    category: "Software Engineering",
+    icon: Globe,
+    title: "Web Development",
+    href: "/web-development",
+    shortDescription: "Business websites and marketing sites built to perform.",
+    description:
+      "Fast, SEO-structured websites — from a single landing page to a full ecommerce store — built on the same engineering standards as our software work, and owned outright by you.",
+    benefits: ["Built for speed and search from the start", "Content you can update yourself", "You own the code and the hosting"],
+    deliverables: ["Design and content structure", "Production website", "Analytics, SEO setup and handover"],
+  },
+  {
     slug: "web-applications",
+    priceFrom: 800000,
+    priceTo: 5000000,
     category: "Software Engineering",
     icon: Code2,
     title: "Web Applications",
@@ -81,6 +111,8 @@ export const services: Service[] = [
   },
   {
     slug: "mobile-apps",
+    priceFrom: 1500000,
+    priceTo: 8000000,
     category: "Software Engineering",
     icon: Smartphone,
     title: "Mobile Apps",
@@ -91,6 +123,8 @@ export const services: Service[] = [
   },
   {
     slug: "dashboards",
+    priceFrom: 700000,
+    priceTo: 4000000,
     category: "Software Engineering",
     icon: LayoutDashboard,
     title: "Dashboards",
@@ -101,6 +135,8 @@ export const services: Service[] = [
   },
   {
     slug: "api-development",
+    priceFrom: 500000,
+    priceTo: 3000000,
     category: "Software Engineering",
     icon: Network,
     title: "API Development",
@@ -111,6 +147,8 @@ export const services: Service[] = [
   },
   {
     slug: "cloud-infrastructure",
+    priceFrom: 500000,
+    priceTo: 3000000,
     category: "Software Engineering",
     icon: Cloud,
     title: "Cloud Infrastructure",
@@ -121,6 +159,8 @@ export const services: Service[] = [
   },
   {
     slug: "ai-integrations",
+    priceFrom: 700000,
+    priceTo: 4000000,
     category: "Artificial Intelligence",
     icon: BrainCircuit,
     title: "AI Integrations",
@@ -131,6 +171,8 @@ export const services: Service[] = [
   },
   {
     slug: "workflow-automation",
+    priceFrom: 500000,
+    priceTo: 3000000,
     category: "Artificial Intelligence",
     icon: Workflow,
     title: "Workflow Automation",
@@ -142,6 +184,8 @@ export const services: Service[] = [
   },
   {
     slug: "intelligent-assistants",
+    priceFrom: 800000,
+    priceTo: 5000000,
     category: "Artificial Intelligence",
     icon: Crown,
     title: "Intelligent Assistants",
@@ -152,6 +196,8 @@ export const services: Service[] = [
   },
   {
     slug: "ai-business-solutions",
+    priceFrom: 1500000,
+    priceTo: 7000000,
     category: "Artificial Intelligence",
     icon: BrainCircuit,
     title: "AI-Powered Business Solutions",
@@ -162,6 +208,8 @@ export const services: Service[] = [
   },
   {
     slug: "secure-development",
+    priceFrom: 700000,
+    priceTo: 4000000,
     category: "Cybersecurity",
     icon: ShieldCheck,
     title: "Secure Development",
@@ -172,6 +220,8 @@ export const services: Service[] = [
   },
   {
     slug: "risk-assessments",
+    priceFrom: 350000,
+    priceTo: 1500000,
     category: "Cybersecurity",
     icon: Radar,
     title: "Risk Assessments",
@@ -182,6 +232,8 @@ export const services: Service[] = [
   },
   {
     slug: "security-audits",
+    priceFrom: 500000,
+    priceTo: 2500000,
     category: "Cybersecurity",
     icon: ScanEye,
     title: "Security Audits",
@@ -192,6 +244,8 @@ export const services: Service[] = [
   },
   {
     slug: "security-best-practices",
+    priceFrom: 250000,
+    priceTo: 1200000,
     category: "Cybersecurity",
     icon: Lock,
     title: "Security Best Practices",
@@ -202,6 +256,8 @@ export const services: Service[] = [
   },
   {
     slug: "compliance-readiness",
+    priceFrom: 1000000,
+    priceTo: 5000000,
     category: "Cybersecurity",
     icon: ShieldCheck,
     title: "Compliance Readiness",
@@ -212,6 +268,8 @@ export const services: Service[] = [
   },
   {
     slug: "secure-cloud-architecture",
+    priceFrom: 700000,
+    priceTo: 4000000,
     category: "Cybersecurity",
     icon: Cloud,
     title: "Secure Cloud Architecture",
@@ -222,6 +280,8 @@ export const services: Service[] = [
   },
   {
     slug: "database-architecture",
+    priceFrom: 500000,
+    priceTo: 2500000,
     category: "Software Engineering",
     icon: Database,
     title: "Database Architecture",
@@ -236,4 +296,22 @@ export const serviceCategories: ServiceCategory[] = ["Software Engineering", "Ar
 
 export function getServicesByCategory(category: ServiceCategory) {
   return services.filter((service) => service.category === category)
+}
+
+export function getServiceByTitle(title: string) {
+  return services.find((service) => service.title === title)
+}
+
+/** Compact naira formatting: 800000 -> ₦800,000, 12000000 -> ₦12 million. */
+export function formatNaira(amount: number) {
+  if (amount >= 1_000_000) {
+    const millions = amount / 1_000_000
+    const rounded = Number.isInteger(millions) ? millions : Number(millions.toFixed(1))
+    return `₦${rounded} million`
+  }
+  return `₦${amount.toLocaleString("en-NG")}`
+}
+
+export function formatServiceBand(service: Pick<Service, "priceFrom" | "priceTo">) {
+  return `${formatNaira(service.priceFrom)} – ${formatNaira(service.priceTo)}`
 }

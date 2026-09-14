@@ -93,7 +93,7 @@ export function Navbar() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "link-wipe px-2.5 py-2 text-[11px] font-medium tracking-[0.1em] whitespace-nowrap uppercase",
+                      "link-wipe px-2 py-2 text-[11px] font-medium tracking-[0.08em] whitespace-nowrap uppercase",
                       "text-foreground/70 hover:text-foreground"
                     )}
                   >

@@ -1,13 +1,16 @@
 import { z } from "zod"
 
-export const budgetRanges = [
-  { label: "Under $2,000", value: "under-2k" },
-  { label: "$2,000 – $5,000", value: "2k-5k" },
-  { label: "$5,000 – $15,000", value: "5k-15k" },
-  { label: "$15,000 – $50,000", value: "15k-50k" },
-  { label: "$50,000+", value: "50k-plus" },
-  { label: "Not sure yet", value: "unsure" },
-] as const
+/**
+ * Budget is captured as free text rather than a band.
+ *
+ * The indicative range now comes from the selected service (see `priceFrom` /
+ * `priceTo` in content/services.ts) and is shown to the visitor, so the field
+ * they fill in is their *actual* figure. That is far more useful for scoping
+ * than a bucket, and it lets someone say "₦3m, but flexible" — which a select
+ * cannot express. Left permissive on purpose: people write "2.5m", "₦800,000"
+ * and "about 4 million", and rejecting any of those would cost a lead.
+ */
+export const budgetAmountMaxLength = 80
 
 export const projectTimelines = [
   { label: "As soon as possible", value: "asap" },
@@ -23,7 +26,7 @@ export const contactFormSchema = z.object({
   email: z.email("Enter a valid email address"),
   phone: z.string().optional(),
   serviceNeeded: z.string().optional(),
-  budgetRange: z.string().optional(),
+  budgetAmount: z.string().max(budgetAmountMaxLength, "Keep this short — just the figure").optional(),
   timeline: z.string().optional(),
   message: z.string().min(10, "Tell us a bit more about your project (min. 10 characters)"),
 })

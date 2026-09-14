@@ -17,6 +17,7 @@ export const primaryNav: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Cybersecurity", href: "/cybersecurity" },
   { label: "AI Solutions", href: "/ai-solutions" },
@@ -51,6 +52,7 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
   {
     title: "Resources",
     links: [
+      { label: "Pricing", href: "/pricing" },
       { label: "FAQs", href: "/#faq" },
       { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Terms of Service", href: "/terms" },

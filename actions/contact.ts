@@ -2,7 +2,8 @@
 
 import { Resend } from "resend"
 
-import { contactFormSchema, budgetRanges, projectTimelines, type ContactFormValues } from "@/lib/validations/contact"
+import { contactFormSchema, projectTimelines, type ContactFormValues } from "@/lib/validations/contact"
+import { getServiceByTitle, formatServiceBand } from "@/content/services"
 import { siteConfig } from "@/lib/constants"
 
 function labelFor(options: readonly { label: string; value: string }[], value?: string) {
@@ -40,13 +41,19 @@ export async function submitContactForm(input: ContactFormValues) {
   const resend = new Resend(apiKey)
   const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "MB CoreX Website <onboarding@resend.dev>"
 
+  const selectedService = getServiceByTitle(values.serviceNeeded ?? "")
+  const serviceBand = selectedService ? formatServiceBand(selectedService) : undefined
+
   const detailRows = [
     ["Name", values.name],
     ["Company", values.company],
     ["Email", values.email],
     ["Phone", values.phone],
     ["Service Needed", values.serviceNeeded],
-    ["Budget Range", labelFor(budgetRanges, values.budgetRange)],
+    ["Their Budget", values.budgetAmount],
+    // Our own band for the service they picked, so the quote conversation
+    // starts with both numbers side by side.
+    ["Our Range", serviceBand],
     ["Timeline", labelFor(projectTimelines, values.timeline)],
   ].filter(([, value]) => Boolean(value)) as [string, string][]
 

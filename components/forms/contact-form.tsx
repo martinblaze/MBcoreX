@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Controller, useForm } from "react-hook-form"
+import { Controller, useForm, useWatch } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CheckCircle2, Send } from "lucide-react"
 
@@ -12,12 +12,11 @@ import { TextField } from "./text-field"
 import { EmailField, PhoneField } from "./preset-fields"
 import { TextareaField } from "./textarea-field"
 import { SelectField } from "./select-field"
+import { ServiceSelectField } from "./service-select-field"
 import { ErrorState } from "@/components/feedback/states"
-import { contactFormSchema, budgetRanges, projectTimelines, type ContactFormValues } from "@/lib/validations/contact"
-import { services } from "@/content/services"
+import { contactFormSchema, projectTimelines, type ContactFormValues } from "@/lib/validations/contact"
+import { getServiceByTitle, formatServiceBand } from "@/content/services"
 import { ctaCopy } from "@/lib/constants"
-
-const serviceOptions = services.map((service) => ({ label: service.title, value: service.title }))
 
 type ContactFormProps = {
   /** Left generic so this component isn't coupled to a specific backend (Server Action, API route, etc.). */
@@ -35,6 +34,14 @@ export function ContactForm({ onSubmit, className }: ContactFormProps) {
     reset,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({ resolver: zodResolver(contactFormSchema) })
+
+  // `useWatch` rather than `watch`: it subscribes to this one field instead of
+  // re-rendering the whole form on every keystroke, and it does not trip the
+  // React Compiler bail-out that `watch` causes.
+  const serviceNeeded = useWatch({ control, name: "serviceNeeded" })
+  // The select stores the service title, which is what `getServiceByTitle`
+  // looks up — keeping the emailed value human-readable rather than a slug.
+  const selectedService = getServiceByTitle(serviceNeeded ?? "")
 
   async function handleValid(values: ContactFormValues) {
     setSubmitError(null)
@@ -77,29 +84,36 @@ export function ContactForm({ onSubmit, className }: ContactFormProps) {
             control={control}
             name="serviceNeeded"
             render={({ field }) => (
-              <SelectField
+              <ServiceSelectField
                 label="Service Needed"
-                placeholder="Select a service"
-                options={serviceOptions}
                 value={field.value}
                 onValueChange={field.onChange}
               />
             )}
           />
-          <Controller
-            control={control}
-            name="budgetRange"
-            render={({ field }) => (
-              <SelectField
-                label="Budget Range"
-                placeholder="Select a range"
-                options={budgetRanges as unknown as { label: string; value: string }[]}
-                value={field.value}
-                onValueChange={field.onChange}
-              />
-            )}
+          <TextField
+            label="Your Budget"
+            description="Optional — a rough figure is fine"
+            placeholder="e.g. ₦2,500,000"
+            error={errors.budgetAmount?.message}
+            {...register("budgetAmount")}
           />
         </div>
+
+        {/* Anchors expectations before they type a number. Stays hidden until a
+            service is chosen, so the form is quiet until it has something
+            specific to say. */}
+        {selectedService && (
+          <p
+            aria-live="polite"
+            className="-mt-1 border-l-2 border-primary bg-surface-elevated px-4 py-3 text-body-sm text-muted-foreground"
+          >
+            <span className="font-medium text-foreground">
+              {selectedService.title} typically runs {formatServiceBand(selectedService)}.
+            </span>{" "}
+            Tell us what you have to work with and we&apos;ll be straight with you about what fits.
+          </p>
+        )}
 
         <Controller
           control={control}

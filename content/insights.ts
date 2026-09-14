@@ -442,6 +442,24 @@ jobs:
           "Who builds it — a freelancer, an agency, and a small engineering-led team like ours price differently because the deliverable (and what happens after launch) is different.",
         ],
       },
+        { type: "heading", text: "What it actually costs in Nigeria (2026)" },
+        {
+          type: "list",
+          items: [
+            "One-page or landing site — ₦150,000 to ₦350,000. A single, well-built page: fast, indexed, one clear action.",
+            "Business site, 5 to 10 pages with custom design and a CMS — ₦350,000 to ₦900,000. The most common request we get.",
+            "Ecommerce store with payments, inventory and customer accounts — ₦700,000 to ₦2.5 million.",
+            "Web application with logins, dashboards and third-party integrations — ₦1.5 million to ₦6 million. At this point it is software, not a website.",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "Budget separately for running costs. Hosting, domain, SSL, monitoring, backups and content updates realistically run ₦120,000 to ₦500,000 a year depending on traffic and how often the site changes. A quote that omits this is quoting half the project.",
+        },
+        {
+          type: "paragraph",
+          text: "Those are the ranges we actually quote within, not a price list — the final number comes from scope, not from a tier. Anything quoted far below the bottom of a band is usually missing something you will pay for later.",
+        },
       { type: "heading", text: "What cheap options usually leave out" },
       {
         type: "paragraph",
@@ -491,6 +509,24 @@ jobs:
           "A security and scalability review before your first real customers touch the product, not after something breaks.",
         ],
       },
+        { type: "heading", text: "What a SaaS build actually costs in Nigeria (2026)" },
+        {
+          type: "list",
+          items: [
+            "Clickable prototype for validation or fundraising — ₦500,000 to ₦1.5 million. No real backend; it exists to test whether anyone wants this.",
+            "Lean MVP with one core workflow, authentication, billing and an admin view — ₦1.5 million to ₦5 million.",
+            "Full V1 with multi-tenancy, roles and permissions, integrations and reporting — ₦5 million to ₦15 million.",
+            "Scale-stage platform with heavy compliance, data volume or integration load — ₦15 million to ₦40 million and up.",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "The number founders most often leave out is what it costs to keep running. Infrastructure, monitoring, support and continued iteration land between ₦80,000 and ₦600,000 a month from the day you launch. A SaaS product is a running cost, not a one-off purchase.",
+        },
+        {
+          type: "paragraph",
+          text: "Those are the ranges we actually quote within, not a price list — the final number comes from scope, not from a tier. Anything quoted far below the bottom of a band is usually missing something you will pay for later.",
+        },
       { type: "heading", text: "Where SaaS budgets actually go wrong" },
       {
         type: "paragraph",
@@ -544,6 +580,18 @@ jobs:
           "The long-term goal is a second revenue line from software, not just solving your own operational problem.",
         ],
       },
+        { type: "heading", text: "What the two paths cost" },
+        {
+          type: "list",
+          items: [
+            "Single-tenant internal system — ₦2.5 million to ₦10 million, plus ₦60,000 to ₦250,000 a month to run and maintain.",
+            "Multi-tenant product — ₦4 million to ₦18 million for the same feature set, plus ₦200,000 to ₦800,000 a month.",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "The gap is the point. Identical features cost roughly 40 to 70 percent more to build multi-tenant, because tenancy, per-tenant configuration, subscription billing, self-service onboarding and data isolation are all real engineering, not switches you flip later. Paying that premium is correct if you will genuinely sell to others. Paying it for a system only you will ever use is money spent on a feature you will never turn on.",
+        },
       {
         type: "quote",
         text: "A lot of businesses start this conversation assuming SaaS is the more \"serious\" answer. It isn't — it's the answer to a different question than the one most of them are actually asking.",
@@ -643,6 +691,18 @@ jobs:
           "Design needs to be genuinely distinct, not a themed variation other businesses in the same space are also running.",
         ],
       },
+        { type: "heading", text: "What each actually costs (2026)" },
+        {
+          type: "list",
+          items: [
+            "WordPress build with a premium theme, plugins and setup — ₦250,000 to ₦700,000, plus ₦120,000 to ₦350,000 a year in licences, plugin renewals and maintenance.",
+            "Custom build — ₦800,000 to ₦3.5 million, plus ₦100,000 to ₦300,000 a year for hosting and maintenance.",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "WordPress is clearly cheaper to start, and for many businesses it stays the right answer. The crossover tends to arrive around year three: recurring licences, plugin conflicts, and the performance and security work needed to keep a plugin-heavy site fast add up until the cumulative spend passes what a custom build would have cost outright.",
+        },
       {
         type: "quote",
         text: "The question isn't which platform is \"better.\" It's whether your site's requirements are mostly content, or mostly logic — and WordPress and custom development are built for different halves of that split.",
