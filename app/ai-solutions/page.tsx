@@ -48,8 +48,8 @@ export default function AISolutionsPage() {
         description={aiApproach.description}
         actions={[{ label: "Book a Consultation", href: "/contact" }]}
         image={{
-          srcLight: "/images/artificialintelligence.png",
-          position: "60% center",
+          srcLight: "/images/hero/hero-ai-solutions-light.jpg",
+          srcDark: "/images/hero/hero-ai-solutions-dark.jpg",
         }}
       />
 
@@ -122,6 +122,7 @@ export default function AISolutionsPage() {
       </Section>
 
       <CTABanner
+        image="systems"
         heading="Ready to Build Faster, Without Cutting Corners?"
         description="Let's talk about where AI-assisted delivery could help your project."
         primaryLabel="Book a Consultation"

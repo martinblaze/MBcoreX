@@ -42,7 +42,7 @@ export default async function InsightsPage({ searchParams }: Props) {
         breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Insights" }]} />}
         eyebrow="Insights"
         title={[
-          "Engineering &amp; security",
+          "Engineering & security",
           <Accent key="accent" tone="brand">insights.</Accent>,
         ]}
         description="Technical writing on software engineering, AI-assisted development, cybersecurity, cloud and business technology — written by the people building the software."
@@ -127,6 +127,7 @@ export default async function InsightsPage({ searchParams }: Props) {
       <NewsletterSection />
 
       <CTABanner
+        image="talk"
         heading="Have a Question in the Meantime?"
         description="Reach out directly — we're happy to talk through it."
         primaryLabel="Book a Consultation"

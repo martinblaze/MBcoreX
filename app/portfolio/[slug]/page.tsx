@@ -327,6 +327,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
       )}
 
       <CTABanner
+        image="build"
         heading="Let's Build Your Next Project"
         description="Tell us what you're working on — we'll follow up within one business day."
         primaryLabel="Book a Consultation"

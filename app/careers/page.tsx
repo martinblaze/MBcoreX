@@ -48,6 +48,7 @@ export default function CareersPage() {
         />
       </Section>
       <CTABanner
+        image="talk"
         heading="Think You'd Be a Good Fit?"
         description="Send us a message — we review every inquiry."
         primaryLabel="Get in Touch"

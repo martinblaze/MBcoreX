@@ -69,6 +69,7 @@ export default async function InsightsCategoryPage({ params }: Props) {
       </Section>
 
       <CTABanner
+        image="talk"
         heading="Have a Question in the Meantime?"
         description="Reach out directly — we're happy to talk through it."
         primaryLabel="Book a Consultation"

@@ -87,8 +87,8 @@ export default function CustomSoftwarePage() {
         description="MB CoreX is a custom software development company in Nigeria — bespoke, enterprise-grade software, not a generic template forced to fit."
         actions={[{ label: "Book a Consultation", href: "/contact" }]}
         image={{
-          srcLight: "/images/Software Engineering.png",
-          position: "58% center",
+          srcLight: "/images/hero/hero-custom-software-light.jpg",
+          srcDark: "/images/hero/hero-custom-software-dark.jpg",
         }}
       />
 
@@ -185,6 +185,7 @@ export default function CustomSoftwarePage() {
       </Section>
 
       <CTABanner
+        image="build"
         heading="Have a Custom Build in Mind?"
         description="Book a free consultation and let's talk through your workflow and requirements."
         primaryLabel="Book a Consultation"

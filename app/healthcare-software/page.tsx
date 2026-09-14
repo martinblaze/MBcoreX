@@ -214,6 +214,7 @@ export default function HealthcareSoftwarePage() {
       </Section>
 
       <CTABanner
+        image="systems"
         heading="Building Software for a Healthcare or Diagnostics Business?"
         description="Book a free consultation and let's talk through your data-handling requirements."
         primaryLabel="Book a Consultation"

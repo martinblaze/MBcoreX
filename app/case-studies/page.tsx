@@ -35,10 +35,10 @@ export default function CaseStudiesPage() {
           "Real problems.",
           <Accent key="accent" tone="brand">Real solutions.</Accent>,
         ]}
-        description="We don&apos;t just build. See how we take businesses from challenges to measurable results."
+        description="We don’t just build. See how we take businesses from challenges to measurable results."
         image={{
-          srcLight: "/images/RealProblemsRealSolutions.png",
-          position: "62% center",
+          srcLight: "/images/hero/hero-case-studies-light.jpg",
+          srcDark: "/images/hero/hero-case-studies-dark.jpg",
         }}
       />
 
@@ -61,6 +61,7 @@ export default function CaseStudiesPage() {
       </Section>
 
       <CTABanner
+        image="build"
         heading="Ready to Be Our Next Case Study?"
         description="Tell us about your business problem — we'll tell you how we'd solve it."
         primaryLabel="Book a Consultation"

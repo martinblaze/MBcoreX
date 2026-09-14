@@ -186,6 +186,7 @@ export default async function BlogPostPage({ params }: Props) {
       )}
 
       <CTABanner
+        image="talk"
         heading="Have a Project That Needs This Kind of Thinking?"
         description="Let's talk about how MB CoreX can help you build it."
         primaryLabel="Book a Consultation"

@@ -32,9 +32,8 @@ export default function PortfolioPage() {
         ]}
         description="We build products that solve real problems and create real impact — filter by category to explore."
         image={{
-          srcLight: "/images/SolutionsLightmode.png",
-          srcDark: "/images/Solutions.jpg",
-          position: "62% center",
+          srcLight: "/images/hero/hero-portfolio-light.jpg",
+          srcDark: "/images/hero/hero-portfolio-dark.jpg",
         }}
       />
 
@@ -43,6 +42,7 @@ export default function PortfolioPage() {
       </Section>
 
       <CTABanner
+        image="build"
         heading="Have a Project in Mind?"
         description="Let's talk about what we could build for your business."
         primaryLabel="Book a Consultation"

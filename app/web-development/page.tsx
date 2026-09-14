@@ -87,8 +87,8 @@ export default function WebDevelopmentPage() {
         description="MB CoreX is a web development company in Nigeria building fast, responsive websites and web applications — from marketing sites to fully custom platforms."
         actions={[{ label: "Book a Consultation", href: "/contact" }]}
         image={{
-          srcLight: "/images/UIUX.png",
-          position: "55% center",
+          srcLight: "/images/hero/hero-web-development-light.jpg",
+          srcDark: "/images/hero/hero-web-development-dark.jpg",
         }}
       />
 
@@ -185,6 +185,7 @@ export default function WebDevelopmentPage() {
       </Section>
 
       <CTABanner
+        image="systems"
         heading="Ready to Build a Website That Works?"
         description="Book a free consultation and let's talk through what your site needs to do."
         primaryLabel="Book a Consultation"

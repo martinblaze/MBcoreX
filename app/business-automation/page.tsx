@@ -85,8 +85,8 @@ export default function BusinessAutomationPage() {
         description="MB CoreX builds business automation software in Nigeria — workflow and process automation that frees up staff time for higher-value work."
         actions={[{ label: "Book a Consultation", href: "/contact" }]}
         image={{
-          srcLight: "/images/BusinessTechnology.png",
-          position: "55% center",
+          srcLight: "/images/hero/hero-business-automation-light.jpg",
+          srcDark: "/images/hero/hero-business-automation-dark.jpg",
         }}
       />
 
@@ -167,6 +167,7 @@ export default function BusinessAutomationPage() {
       </Section>
 
       <CTABanner
+        image="systems"
         heading="Ready to Automate the Repetitive Work?"
         description="Book a free consultation and let's audit where your team's time is actually going."
         primaryLabel="Book a Consultation"

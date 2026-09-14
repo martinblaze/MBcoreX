@@ -37,14 +37,13 @@ export default function ContactPage() {
         breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />}
         eyebrow="Contact"
         title={[
-          "Let&apos;s build something",
+          "Let’s build something",
           <Accent key="accent" tone="brand">exceptional.</Accent>,
         ]}
-        description="Have a project in mind or need advice? We&apos;d love to hear from you."
+        description="Have a project in mind or need advice? We’d love to hear from you."
         image={{
-          srcLight: "/images/Let'sBuildSomethingExceptionalLightmode.png",
-          srcDark: "/images/Let'sBuildSomethingExceptional.png",
-          position: "center",
+          srcLight: "/images/hero/hero-contact-light.jpg",
+          srcDark: "/images/hero/hero-contact-dark.jpg",
         }}
       />
 

@@ -55,7 +55,7 @@ export const blogPosts: BlogPost[] = [
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-06-02",
-    image: "/images/artificialintelligence.png",
+    image: "/images/blog/how-we-use-ai-in-client-projects.jpg",
     featured: true,
     body: [
       {
@@ -101,7 +101,7 @@ export const blogPosts: BlogPost[] = [
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-05-18",
-    image: "/images/Software Engineering.png",
+    image: "/images/blog/typescript-server-actions-by-default.jpg",
     body: [
       {
         type: "paragraph",
@@ -154,7 +154,7 @@ export async function submitContactForm(input: unknown) {
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-04-27",
-    image: "/images/Cybersecurity.png",
+    image: "/images/blog/secure-by-design-nist-800-53-explained.jpg",
     body: [
       {
         type: "paragraph",
@@ -209,7 +209,7 @@ export function middleware(request: Request) {
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-04-09",
-    image: "/images/Cloud.png",
+    image: "/images/blog/right-sizing-cloud-infrastructure-for-startups.jpg",
     body: [
       {
         type: "paragraph",
@@ -246,7 +246,7 @@ export function middleware(request: Request) {
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-03-21",
-    image: "/images/DevOps.png",
+    image: "/images/blog/minimal-cicd-pipeline-that-catches-bugs.jpg",
     body: [
       {
         type: "paragraph",
@@ -301,7 +301,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-03-05",
-    image: "/images/UIUX.png",
+    image: "/images/blog/designing-trust-ui-patterns-for-credibility.jpg",
     body: [
       {
         type: "paragraph",
@@ -341,7 +341,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-02-14",
-    image: "/images/Case Studies.png",
+    image: "/images/blog/lessons-from-digitizing-a-diagnostics-lab.jpg",
     body: [
       {
         type: "paragraph",
@@ -381,7 +381,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-01-22",
-    image: "/images/BusinessTechnology.png",
+    image: "/images/blog/custom-software-vs-off-the-shelf-framework.jpg",
     body: [
       {
         type: "paragraph",
@@ -426,7 +426,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-07-06",
-    image: "/images/Solutions.jpg",
+    image: "/images/blog/website-development-cost-nigeria-2026.jpg",
     body: [
       {
         type: "paragraph",
@@ -475,7 +475,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-07-09",
-    image: "/images/RealProblemsRealSolutions.png",
+    image: "/images/blog/saas-product-cost-nigeria.jpg",
     body: [
       {
         type: "paragraph",
@@ -520,7 +520,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-07-13",
-    image: "/images/BusinessTechnology.png",
+    image: "/images/blog/custom-software-vs-saas-nigerian-business.jpg",
     body: [
       {
         type: "paragraph",
@@ -573,7 +573,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-07-16",
-    image: "/images/Software Engineering.png",
+    image: "/images/blog/why-nigerian-businesses-need-custom-software-over-templates.jpg",
     body: [
       {
         type: "paragraph",
@@ -618,7 +618,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-07-20",
-    image: "/images/Let'sBuildSomethingExceptional.png",
+    image: "/images/blog/wordpress-vs-custom-development.jpg",
     body: [
       {
         type: "paragraph",
@@ -667,7 +667,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-07-23",
-    image: "/images/Cybersecurity.png",
+    image: "/images/blog/website-security-checklist-nigerian-businesses.jpg",
     body: [
       {
         type: "paragraph",
@@ -711,7 +711,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-07-25",
-    image: "/images/reenemedicalservices.png",
+    image: "/images/blog/best-website-features-every-hospital-clinic-should-have.jpg",
     body: [
       {
         type: "paragraph",
@@ -758,7 +758,7 @@ jobs:
     authorName: "Martin Blaze",
     authorRole: "Founder, MB CoreX",
     publishedAt: "2026-07-27",
-    image: "/images/artificialintelligence.png",
+    image: "/images/blog/how-ai-is-changing-software-development-in-nigeria.jpg",
     body: [
       {
         type: "paragraph",

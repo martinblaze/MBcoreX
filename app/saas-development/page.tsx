@@ -86,8 +86,8 @@ export default function SaasDevelopmentPage() {
         description="MB CoreX is a SaaS development company in Nigeria — multi-tenant products built with secure data isolation, billing and performance in mind from the start."
         actions={[{ label: "Book a Consultation", href: "/contact" }]}
         image={{
-          srcLight: "/images/Cloud.png",
-          position: "55% center",
+          srcLight: "/images/hero/hero-saas-development-light.jpg",
+          srcDark: "/images/hero/hero-saas-development-dark.jpg",
         }}
       />
 
@@ -201,6 +201,7 @@ export default function SaasDevelopmentPage() {
       </Section>
 
       <CTABanner
+        image="systems"
         heading="Ready to Build Your SaaS Product?"
         description="Book a free consultation and let's scope your MVP."
         primaryLabel="Book a Consultation"

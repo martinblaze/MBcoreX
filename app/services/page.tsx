@@ -53,9 +53,8 @@ export default function ServicesPage() {
         ]}
         description="We provide a wide range of services to help businesses build, secure and scale their digital presence — organized below by discipline."
         image={{
-          srcLight: "/images/SolutionsLightmode.png",
-          srcDark: "/images/Solutions.jpg",
-          position: "62% center",
+          srcLight: "/images/hero/hero-services-light.jpg",
+          srcDark: "/images/hero/hero-services-dark.jpg",
         }}
       />
 
@@ -160,6 +159,7 @@ export default function ServicesPage() {
       </Section>
 
       <CTABanner
+        image="build"
         heading="Have a Project in Mind?"
         description="Let's discuss how MB CoreX can help you build it — securely, and on time."
         primaryLabel="Book a Consultation"

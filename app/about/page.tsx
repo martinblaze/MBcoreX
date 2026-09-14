@@ -40,7 +40,7 @@ export default function AboutPage() {
           "Building technology.",
           <Accent key="accent" tone="brand">Securing futures.</Accent>,
         ]}
-        description="Technology is more than code. It&apos;s about solving real problems, protecting valuable data, and empowering people to do more."
+        description="Technology is more than code. It’s about solving real problems, protecting valuable data, and empowering people to do more."
         image={{
           srcLight: "/images/Background2Lightmode.png",
           srcDark: "/images/Background2.png",
@@ -185,6 +185,7 @@ export default function AboutPage() {
       </Section>
 
       <CTABanner
+        image="build"
         heading="Let's Build Something Great Together"
         description="Have a project in mind or need advice? We'd love to hear from you."
         primaryLabel="Book a Consultation"

@@ -231,6 +231,7 @@ export default function CybersecurityPage() {
       </Section>
 
       <CTABanner
+        image="secure"
         heading="Ready to Secure Your Business?"
         description="Book a consultation and let's talk through your current risk posture."
         primaryLabel="Secure Your Business"

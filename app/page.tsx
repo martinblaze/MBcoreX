@@ -341,6 +341,7 @@ export default function HomePage() {
       </Section>
 
       <CTABanner
+        image="build"
         heading="Ready to build something secure and scalable?"
         description={`Book a free discovery call, or reach us directly at ${siteConfig.email} / ${siteConfig.phone}.`}
         primaryLabel="Book a Consultation"
