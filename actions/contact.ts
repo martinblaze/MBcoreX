@@ -2,14 +2,9 @@
 
 import { Resend } from "resend"
 
-import { contactFormSchema, projectTimelines, type ContactFormValues } from "@/lib/validations/contact"
+import { contactFormSchema, type ContactFormValues } from "@/lib/validations/contact"
 import { getServiceByTitle, formatServiceBand } from "@/content/services"
 import { siteConfig } from "@/lib/constants"
-
-function labelFor(options: readonly { label: string; value: string }[], value?: string) {
-  if (!value) return undefined
-  return options.find((option) => option.value === value)?.label ?? value
-}
 
 function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, (char) =>
@@ -46,7 +41,6 @@ export async function submitContactForm(input: ContactFormValues) {
 
   const detailRows = [
     ["Name", values.name],
-    ["Company", values.company],
     ["Email", values.email],
     ["Phone", values.phone],
     ["Service Needed", values.serviceNeeded],
@@ -54,7 +48,6 @@ export async function submitContactForm(input: ContactFormValues) {
     // Our own band for the service they picked, so the quote conversation
     // starts with both numbers side by side.
     ["Our Range", serviceBand],
-    ["Timeline", labelFor(projectTimelines, values.timeline)],
   ].filter(([, value]) => Boolean(value)) as [string, string][]
 
   const html = `
@@ -72,7 +65,7 @@ export async function submitContactForm(input: ContactFormValues) {
     from: fromEmail,
     to: siteConfig.email,
     replyTo: values.email,
-    subject: `New inquiry from ${values.name}${values.company ? ` (${values.company})` : ""}`,
+    subject: `New inquiry from ${values.name}`,
     html,
   })
 

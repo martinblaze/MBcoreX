@@ -1,51 +1,56 @@
 import type { MetadataRoute } from "next"
 
-import { siteUrl } from "@/lib/seo"
-import { portfolioProjects } from "@/content/portfolio"
-import { blogPosts, blogCategories, categorySlug } from "@/content/insights"
+import { blogPosts } from "@/content/insights"
+import { locations } from "@/content/locations"
+import { services } from "@/content/services"
+import { caseStudies } from "@/content/work"
+import { absoluteUrl } from "@/lib/seo"
 
-const staticRoutes = [
-  "",
-  "/about",
-  "/services",
-  "/pricing",
-  "/portfolio",
-  "/case-studies",
-  "/cybersecurity",
-  "/ai-solutions",
-  "/insights",
-  "/careers",
-  "/contact",
-]
+// Update when site content materially changes; used as lastModified for static pages.
+const lastUpdated = new Date("2026-10-13")
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = staticRoutes.map((path) => ({
-    url: `${siteUrl}${path}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: path === "" ? 1 : 0.8,
-  }))
+  const staticRoutes: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
+    { path: "", priority: 1, changeFrequency: "weekly" },
+    { path: "/services", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/pricing", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/locations", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/insights", priority: 0.8, changeFrequency: "weekly" },
+    { path: "/case-studies", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/about", priority: 0.6, changeFrequency: "monthly" },
+    { path: "/contact", priority: 0.7, changeFrequency: "monthly" },
+  ]
 
-  const projectRoutes = portfolioProjects.map((project) => ({
-    url: `${siteUrl}/portfolio/${project.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }))
-
-  const postRoutes = blogPosts.map((post) => ({
-    url: `${siteUrl}/insights/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
-    changeFrequency: "yearly" as const,
-    priority: 0.6,
-  }))
-
-  const categoryRoutes = blogCategories.map((category) => ({
-    url: `${siteUrl}/insights/category/${categorySlug(category)}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.5,
-  }))
-
-  return [...routes, ...projectRoutes, ...postRoutes, ...categoryRoutes]
+  return [
+    ...staticRoutes.map((route) => ({
+      url: absoluteUrl(route.path || "/"),
+      lastModified: lastUpdated,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    })),
+    ...services.map((service) => ({
+      url: absoluteUrl(`/services/${service.slug}`),
+      lastModified: lastUpdated,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
+    ...locations.map((location) => ({
+      url: absoluteUrl(`/locations/${location.slug}`),
+      lastModified: lastUpdated,
+      changeFrequency: "monthly" as const,
+      priority: location.slug === "lagos" || location.slug === "abuja" ? 0.8 : 0.6,
+    })),
+    ...caseStudies.map((study) => ({
+      url: absoluteUrl(`/case-studies/${study.slug}`),
+      lastModified: lastUpdated,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    ...blogPosts.map((post) => ({
+      url: absoluteUrl(`/insights/${post.slug}`),
+      lastModified: new Date(post.updatedAt ?? post.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  ]
 }

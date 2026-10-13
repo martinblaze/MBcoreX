@@ -1,213 +1,126 @@
 import type { Metadata } from "next"
-import { Check, Scale, ScrollText, Wallet } from "lucide-react"
 
-import { Section } from "@/components/layout/section"
-import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { PageHero } from "@/components/sections/page-hero"
-import { FeatureGrid } from "@/components/sections/feature-grid"
-import { FAQAccordion } from "@/components/sections/faq-accordion"
-import { CTABanner } from "@/components/sections/cta-banner"
-import { Reveal } from "@/components/motion/reveal"
-import { MaskRevealInView } from "@/components/motion/mask-reveal"
-import { Accent, Caption, Heading, Text } from "@/components/typography/typography"
+import Link from "next/link"
+
+import { FaqList } from "@/components/faq"
+import { Pill } from "@/components/pill"
+import { Headline, Reveal } from "@/components/reveal"
 import { JsonLd } from "@/components/seo/json-ld"
+import { formatNaira, services, type Faq } from "@/content/services"
+import { breadcrumbJsonLd, buildMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo"
 
-import {
-  serviceCategories,
-  getServicesByCategory,
-  formatServiceBand,
-} from "@/content/services"
-import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo"
+const title = "Website, App, Software & SEO Pricing in Nigeria (Naira)"
+const description =
+  "Typical naira prices for web development, web applications, custom software, mobile apps and Google SEO in Nigeria, with what is included and what drives the cost."
 
-export const metadata: Metadata = buildMetadata({
-  title: "Pricing — What Software and Security Work Costs in Nigeria",
-  description:
-    "Indicative naira price ranges for every MB CoreX service — custom software, websites, SaaS, AI and cybersecurity. Real bands, what drives them, and what is always included.",
-  path: "/pricing",
-})
+export const metadata: Metadata = buildMetadata({ title: `${title} | MB CoreX`, description, path: "/pricing" })
 
-const principles = [
+const faqs: Faq[] = [
   {
-    icon: Scale,
-    title: "Ranges, not packages",
-    description:
-      "Every band below is a range because scope decides the number. We quote against your actual requirements, never a tier you have to squeeze into.",
+    question: "How much does a website cost in Nigeria?",
+    answer: "At MB CoreX, websites typically range from about ₦150,000 for a focused landing page to around ₦2.5 million for a larger site or online store. The price depends on the number of pages, custom design, integrations such as payments, and content.",
   },
   {
-    icon: ScrollText,
-    title: "Quoted before we start",
-    description:
-      "You get a written scope and a fixed figure before any work begins. If scope changes mid-project, we re-quote that change rather than surprising you at the end.",
+    question: "How much does it cost to build a mobile app in Nigeria?",
+    answer: "Mobile apps at MB CoreX typically range from about ₦1.5 million to ₦8 million, depending on features, user roles, integrations and the backend the app needs.",
   },
   {
-    icon: Wallet,
-    title: "Running costs stated upfront",
-    description:
-      "Hosting, monitoring and maintenance are quoted separately and clearly. A build price that hides its running cost is quoting half the project.",
-  },
-]
-
-const alwaysIncluded = [
-  "Full ownership of source code and infrastructure",
-  "Security considered at every stage, not bolted on before launch",
-  "Performance and SEO structure built in, not sold as an extra",
-  "Written handover documentation",
-  "A named person to talk to, not a ticket queue",
-]
-
-const pricingFaq = [
-  {
-    question: "Why ranges instead of fixed prices?",
-    answer:
-      "Because a five-page marketing site and a site with accounts, a database and admin tooling are not the same project, even when they look similar from outside. A single fixed price for either would mean overcharging one client to cover the other. The range tells you which conversation you are in; the scope sets the number.",
+    question: "How much does SEO cost in Nigeria?",
+    answer: "Google SEO typically ranges from about ₦150,000 for an audit and priority fixes to about ₦1,000,000 per month for a full programme in a competitive market. We recommend starting with an audit.",
   },
   {
-    question: "What decides where in the range I land?",
-    answer:
-      "Mostly scope and integrations. Number of distinct user roles, how much of the data is custom, how many third-party systems have to talk to each other, and whether the work carries compliance requirements. Design complexity matters less than most people expect; integrations matter more.",
+    question: "Are these fixed prices?",
+    answer: "They are typical ranges, not quotes. After a short discovery call we scope your project and give a fixed price for the first version, so there are no surprises.",
   },
   {
-    question: "Do you take payment in stages?",
-    answer:
-      "Yes. Projects are split into milestones with a payment attached to each, so you are never paying far ahead of delivered work. The split is agreed in the written scope before we start.",
+    question: "Do prices depend on where in Nigeria I am?",
+    answer: "No. We work online and the price is the same in every state. It depends on the scope of the work only.",
   },
   {
-    question: "What if my budget is below the range?",
-    answer:
-      "Tell us the real figure anyway. Often the right answer is a smaller first phase that solves the most valuable part of the problem, rather than a stripped-down version of everything. If we genuinely cannot do good work at your budget, we will say so directly instead of taking the project and cutting corners.",
-  },
-  {
-    question: "Are these prices in naira?",
-    answer:
-      "Yes, all figures are in Nigerian naira and reflect 2026 rates. For clients invoicing in another currency we quote at the prevailing rate at the point of contract.",
+    question: "What is not included in these prices?",
+    answer: "Third-party running costs such as domain names, hosting, paid tools, SMS and payment-gateway fees are separate. We list them clearly in every quote.",
   },
 ]
 
 export default function PricingPage() {
   return (
     <>
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Pricing", path: "/pricing" },
-        ])}
-      />
+      <JsonLd data={webPageJsonLd({ name: title, description, path: "/pricing" })} />
+      <JsonLd data={faqJsonLd(faqs)} />
+      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Pricing", path: "/pricing" }])} />
+      <section className="wrap pb-16 pt-32 md:pb-24 md:pt-40">
+        <Headline as="h1" immediate className="t-mega max-w-[14ch]" text="Straight [[pricing]], in naira." />
+        <Reveal delay={0.4} className="mt-10 md:max-w-xl">
+          <p className="t-lead">
+            Typical ranges for each service. The real number always comes from scope, and we&apos;ll tell you plainly
+            what fits your budget before you commit.
+          </p>
+        </Reveal>
+      </section>
 
-      <PageHero
-        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Pricing" }]} />}
-        eyebrow="Pricing"
-        title={["What this work", <Accent key="accent" tone="brand">actually costs.</Accent>]}
-        description="Indicative naira ranges for every service we offer, so you know roughly where you stand before you ever speak to us. No packages, no hidden running costs."
-        image={{
-          srcLight: "/images/hero/hero-pricing-light.jpg",
-          srcDark: "/images/hero/hero-pricing-dark.jpg",
-        }}
-      />
-
-      <Section spacing="tight">
-        <FeatureGrid cols={3} items={principles} />
-      </Section>
-
-      {serviceCategories.map((category, index) => {
-        const categoryServices = getServicesByCategory(category)
-        return (
-          <Section key={category} spacing={index === 0 ? "default" : "tight"}>
-            <div className="mb-10">
-              <Reveal variant="fade">
-                <Caption className="mb-5 flex items-center gap-3 text-primary">
-                  <span aria-hidden="true" className="inline-block h-px w-8 bg-primary" />
-                  {category}
-                </Caption>
-              </Reveal>
-              <Heading level={2} size="lg">
-                <MaskRevealInView lines={[category]} />
-              </Heading>
-            </div>
-
-            {/* A ruled two-column table rather than pricing cards: these are
-                ranges across twenty services, and cards would imply tiers we
-                do not sell. */}
-            <ul className="border-t border-border">
-              {categoryServices.map((service) => (
-                <li
-                  key={service.slug}
-                  className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-b border-border py-6"
-                >
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-heading text-body-lg font-medium tracking-tight text-foreground">
+      <section className="wrap pb-20 md:pb-32">
+        <ul className="border-t border-line">
+          {services.map((service, i) => (
+            <Reveal as="li" key={service.slug} className="border-b border-line">
+              <div className="grid gap-6 py-8 md:grid-cols-12 md:gap-x-6 md:py-12">
+                <div className="md:col-span-4">
+                  <p className="t-small mb-3 text-muted">0{i + 1}</p>
+                  <h2 className="t-title">
+                    <Link href={`/services/${service.slug}`} className="u-link">
                       {service.title}
-                    </h3>
-                    <Text size="sm" tone="muted" className="mt-1 max-w-md text-pretty">
-                      {service.shortDescription}
-                    </Text>
+                    </Link>
+                  </h2>
+                  <p className="t-small mt-3 max-w-xs text-muted">{service.blurb}</p>
+                </div>
+
+                <div className="md:col-span-4">
+                  <p className="t-small mb-3 text-muted">What&apos;s included</p>
+                  <ul className="flex flex-col gap-1.5">
+                    {service.deliverables.map((item) => (
+                      <li key={item} className="flex gap-2 text-[0.95rem] leading-snug tracking-tight">
+                        <span aria-hidden="true" className="mt-[0.55em] size-1 shrink-0 rounded-full bg-ink" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex flex-col justify-between gap-6 md:col-span-4 md:items-end md:text-right">
+                  <div>
+                    <p className="t-small mb-2 text-muted">Typical range</p>
+                    <p className="text-[clamp(1.6rem,3vw,2.6rem)] font-medium leading-none tracking-[-0.04em]">
+                      {formatNaira(service.priceFrom)}
+                    </p>
+                    <p className="t-small mt-2 text-muted">
+                      up to {formatNaira(service.priceTo)}
+                      {service.priceNote ? `, ${service.priceNote}` : ""}
+                    </p>
                   </div>
-                  <span className="shrink-0 font-display text-xl font-normal whitespace-nowrap text-foreground sm:text-2xl">
-                    {formatServiceBand(service)}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </Section>
-        )
-      })}
+                  <Pill href="/contact">Get a quote</Pill>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
+      </section>
 
-      <Section spacing="tight" tone="surface" curveTop="background" curveBottom="background">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <Reveal variant="fade">
-              <Caption className="mb-5 flex items-center gap-3 text-primary">
-                <span aria-hidden="true" className="inline-block h-px w-8 bg-primary" />
-                Included as standard
-              </Caption>
-            </Reveal>
-            <Heading level={2} size="lg">
-              <MaskRevealInView lines={["Not sold back to you", "as an add-on."]} />
-            </Heading>
+      <section className="border-t border-line py-16 md:py-24">
+        <div className="wrap grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <Headline text="Pricing [[questions]]" className="t-title" />
           </div>
-          <div className="lg:col-span-7">
-            <Reveal variant="fade">
-              <ul className="flex flex-col gap-4">
-                {alwaysIncluded.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-body-md text-foreground">
-                    <Check className="mt-1 size-4 shrink-0 text-primary" aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+          <div className="md:col-span-8">
+            <FaqList items={faqs} />
           </div>
         </div>
-      </Section>
+      </section>
 
-      <Section spacing="default">
-        <div className="grid gap-16 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <Reveal variant="fade">
-              <Caption className="mb-5 flex items-center gap-3 text-primary">
-                <span aria-hidden="true" className="inline-block h-px w-8 bg-primary" />
-                Pricing FAQ
-              </Caption>
-            </Reveal>
-            <Heading level={2} size="xl" className="lg:sticky lg:top-32">
-              <MaskRevealInView lines={["Questions about", "the numbers."]} />
-            </Heading>
-          </div>
-          <div className="lg:col-span-8">
-            <FAQAccordion items={pricingFaq} />
-          </div>
-        </div>
-      </Section>
-
-      <CTABanner
-        image="build"
-        eyebrow="Get a real number"
-        heading="Tell us the scope and we'll quote it properly."
-        description="Send us what you're trying to build and your budget. We'll come back with a written scope and a firm figure — or tell you honestly if it isn't a fit."
-        primaryLabel="Book a Consultation"
-        primaryHref="/contact"
-        secondaryLabel="See Our Work"
-        secondaryHref="/portfolio"
-      />
+      <section className="wrap py-28 md:py-44">
+        <Headline text="Not sure what you need? [[Let's talk]]." className="t-display max-w-[16ch]" />
+        <Reveal delay={0.2} className="mt-10">
+          <Pill href="/contact">Book a discovery call</Pill>
+        </Reveal>
+      </section>
     </>
   )
 }

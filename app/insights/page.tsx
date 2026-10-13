@@ -1,138 +1,50 @@
 import type { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
 
-import { Section } from "@/components/layout/section"
-import { PageHero } from "@/components/sections/page-hero"
-import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Accent, Caption, Heading, Text } from "@/components/typography/typography"
-import { Badge } from "@/components/ui/badge"
-import { Reveal } from "@/components/motion/reveal"
-import { ImageReveal } from "@/components/motion/image-reveal"
-import { CTABanner } from "@/components/sections/cta-banner"
-import { NewsletterSection } from "@/components/sections/newsletter-section"
-import { InsightsBrowser, CategoryChips } from "@/components/blog/insights-browser"
+import { Breadcrumbs } from "@/components/breadcrumbs"
+import { Pill } from "@/components/pill"
+import { PostCard } from "@/components/post-card"
+import { Headline, Reveal } from "@/components/reveal"
 import { JsonLd } from "@/components/seo/json-ld"
+import { blogPosts } from "@/content/insights"
+import { breadcrumbJsonLd, buildMetadata, itemListJsonLd, webPageJsonLd } from "@/lib/seo"
 
-import { blogPosts, blogCategories, allTags } from "@/content/insights"
-import { getReadingTime } from "@/lib/reading-time"
-import { formatDate } from "@/lib/utils"
-import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo"
+const title = "Guides: Website, Software, App and SEO Costs in Nigeria"
+const description =
+  "Practical guides for Nigerian businesses: what websites, mobile apps, custom software and SEO really cost, how to rank on Google, and how to choose a software company."
 
-type Props = { searchParams: Promise<{ tag?: string }> }
+export const metadata: Metadata = buildMetadata({ title: `${title} | MB CoreX`, description, path: "/insights" })
 
-export const metadata: Metadata = buildMetadata({
-  title: "Insights",
-  description:
-    "Technical writing from MB CoreX on software engineering, AI-assisted development, cybersecurity, cloud and business technology.",
-  path: "/insights",
-})
-
-export default async function InsightsPage({ searchParams }: Props) {
-  const { tag } = await searchParams
-  const featured = blogPosts.find((post) => post.featured) ?? blogPosts[0]
-  const rest = blogPosts.filter((post) => post.slug !== featured.slug)
-
+export default function InsightsPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Insights", path: "/insights" }])} />
+      <JsonLd data={webPageJsonLd({ name: title, description, path: "/insights", type: "CollectionPage" })} />
+      <JsonLd data={itemListJsonLd("MB CoreX guides", blogPosts.map((post) => ({ name: post.title, path: `/insights/${post.slug}` })))} />
+      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Guides", path: "/insights" }])} />
 
-      <PageHero
-        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Insights" }]} />}
-        eyebrow="Insights"
-        title={[
-          "Engineering & security",
-          <Accent key="accent" tone="brand">insights.</Accent>,
-        ]}
-        description="Technical writing on software engineering, AI-assisted development, cybersecurity, cloud and business technology — written by the people building the software."
-        image={{
-          srcLight: "/images/Engineering&SecurityInsightsLightmode.png",
-          srcDark: "/images/Engineering&SecurityInsights.png",
-          position: "center",
-        }}
-      />
-
-      <Section spacing="tight">
-        <Reveal>
-          <Caption className="mb-4 block">Featured Article</Caption>
-          <Link
-            href={`/insights/${featured.slug}`}
-            className="group grid grid-cols-1 gap-6 overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/30 lg:grid-cols-2"
-          >
-            <ImageReveal className="relative aspect-[16/10] w-full lg:h-full lg:aspect-auto">
-              <Image
-                src={featured.image}
-                alt=""
-                fill
-                priority
-                fetchPriority="high"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </ImageReveal>
-            <div className="flex flex-col justify-center gap-3 p-6 lg:p-10">
-              <div className="flex items-center gap-2">
-                <Badge>{featured.category}</Badge>
-                <Text size="sm" tone="muted">
-                  {formatDate(featured.publishedAt)} · {getReadingTime(featured.body)} min read
-                </Text>
-              </div>
-              <Heading level={2} size="lg">
-                {featured.title}
-              </Heading>
-              <Text tone="muted" className="line-clamp-3">
-                {featured.excerpt}
-              </Text>
-              <span className="mt-2 inline-flex items-center gap-1.5 text-body-sm font-medium text-primary">
-                Read Article
-                <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
-              </span>
-            </div>
-          </Link>
+      <section className="wrap pb-16 pt-32 md:pb-24 md:pt-40">
+        <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Guides" }]} />
+        <Headline as="h1" immediate className="t-mega mt-8 max-w-[14ch]" text="Straight answers for [[Nigerian]] businesses." />
+        <Reveal delay={0.4} className="mt-10 max-w-xl">
+          <p className="t-lead">
+            Honest guides on what websites, apps, software and SEO cost in Nigeria, and how to get the most from them.
+          </p>
         </Reveal>
-      </Section>
+      </section>
 
-      <Section spacing="tight">
-        <Reveal>
-          <Caption className="mb-4 block">Browse by Category</Caption>
-          <CategoryChips categories={blogCategories} />
+      <section className="wrap grid gap-x-3 gap-y-14 pb-24 md:grid-cols-3 md:pb-36">
+        {blogPosts.map((post, index) => (
+          <Reveal key={post.slug} delay={(index % 3) * 0.06}>
+            <PostCard post={post} priority={index < 3} />
+          </Reveal>
+        ))}
+      </section>
+
+      <section className="wrap pb-28 md:pb-44">
+        <Headline text="Want it done for you? [[Let's talk]]." className="t-display max-w-[16ch]" />
+        <Reveal delay={0.2} className="mt-8">
+          <Pill href="/contact">Book a discovery call</Pill>
         </Reveal>
-      </Section>
-
-      <Section>
-        <Reveal>
-          <Heading level={2} size="lg" className="mb-8">
-            All Articles
-          </Heading>
-        </Reveal>
-        <InsightsBrowser posts={rest} initialQuery={tag ?? ""} />
-      </Section>
-
-      <Section spacing="tight">
-        <Reveal>
-          <Caption className="mb-4 block">Popular Tags</Caption>
-          <div className="flex flex-wrap gap-2">
-            {allTags.map((item) => (
-              <Link key={item} href={`/insights?tag=${encodeURIComponent(item)}`}>
-                <Badge variant="outline" className="h-auto cursor-pointer px-3 py-1">
-                  {item}
-                </Badge>
-              </Link>
-            ))}
-          </div>
-        </Reveal>
-      </Section>
-
-      <NewsletterSection />
-
-      <CTABanner
-        image="talk"
-        heading="Have a Question in the Meantime?"
-        description="Reach out directly — we're happy to talk through it."
-        primaryLabel="Book a Consultation"
-        primaryHref="/contact"
-      />
+      </section>
     </>
   )
 }

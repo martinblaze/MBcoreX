@@ -1,198 +1,115 @@
 import type { Metadata } from "next"
 
-import { Section } from "@/components/layout/section"
-import { PageHero } from "@/components/sections/page-hero"
-import { SplitLayout } from "@/components/layout/split-layout"
-import { BackgroundHero } from "@/components/layout/background-hero"
-import { ThemedImage } from "@/components/layout/themed-image"
-import { Grid } from "@/components/layout/grid"
-import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Accent, Heading, Text } from "@/components/typography/typography"
-import { Reveal } from "@/components/motion/reveal"
-import { StatsBand } from "@/components/sections/stats-band"
-import { FeatureGrid } from "@/components/sections/feature-grid"
-import { Timeline } from "@/components/sections/timeline"
-import { CTABanner } from "@/components/sections/cta-banner"
-import { TechCard } from "@/components/cards/tech-card"
 import { JsonLd } from "@/components/seo/json-ld"
-
-import { founder, mission, vision, values, aiApproach, timeline, technologies } from "@/content/about"
-import { companyStats } from "@/content/stats"
-import { buildMetadata, breadcrumbJsonLd, personJsonLd } from "@/lib/seo"
+import { Marquee } from "@/components/marquee"
+import { Pill } from "@/components/pill"
+import { Headline, Reveal } from "@/components/reveal"
+import { buildMetadata, personJsonLd } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "About MB CoreX — Software Engineering Team in Nigeria",
+  title: "About MB CoreX: Online Software Company in Nigeria",
   description:
-    "MB CoreX is a software development and cybersecurity company in Nigeria — learn about our mission, founder Martin Blaze, and how we combine engineering with security expertise.",
+    "A small, senior, online team in Nigeria led by founder Martin Blaze. We build websites, web apps, custom software and mobile apps, and get you found on Google.",
   path: "/about",
 })
+
+const founder = {
+  name: "Martin Blaze",
+  role: "Founder, MB CoreX",
+  bio: "Martin Blaze is a full-stack software engineer who founded MB CoreX to give businesses one accountable partner for building software and getting it found on Google. He works across web, mobile and cloud systems, and pairs engineering with practical search work: technical SEO, content and local visibility.",
+  knowsAbout: [
+    "Web development",
+    "Web applications",
+    "Custom software",
+    "Mobile app development",
+    "Google SEO",
+    "Technical SEO",
+    "Next.js",
+    "TypeScript",
+  ],
+}
+
+const principles = [
+  {
+    title: "Senior people, direct access",
+    text: "You talk to the person doing the work. No account managers, no hand-offs, no telephone game.",
+  },
+  {
+    title: "Built to be found",
+    text: "Every site and product ships with SEO structure and performance built in, not bolted on afterwards.",
+  },
+  {
+    title: "Fast without cutting corners",
+    text: "AI-assisted workflows speed up delivery. Architecture, quality and every release stay under human review.",
+  },
+]
+
+const stack = ["Next.js", "TypeScript", "React", "Tailwind CSS", "Node.js", "PostgreSQL", "Stripe", "Vercel", "AWS"]
 
 export default function AboutPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])} />
-      <JsonLd data={personJsonLd(founder)} />
-
-      <PageHero
-        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />}
-        eyebrow="About MB CoreX"
-        title={[
-          "Building technology.",
-          <Accent key="accent" tone="brand">Securing futures.</Accent>,
-        ]}
-        description="Technology is more than code. It’s about solving real problems, protecting valuable data, and empowering people to do more."
-        image={{
-          srcLight: "/images/Background2Lightmode.png",
-          srcDark: "/images/Background2.png",
-          position: "72% center",
-        }}
+      <JsonLd
+        data={personJsonLd({
+          name: founder.name,
+          role: founder.role,
+          bio: founder.bio,
+          knowledgeAreas: founder.knowsAbout,
+        })}
       />
 
-      <Section spacing="tight">
-        <StatsBand stats={companyStats} />
-      </Section>
-
-      <Section>
-        <Grid cols={2} gap="lg">
-          <Reveal>
-            <div className="rounded-2xl border border-border bg-surface p-8">
-              <Heading level={2} size="md">
-                Our Mission
-              </Heading>
-              <Text tone="muted" className="mt-3">
-                {mission}
-              </Text>
-            </div>
-          </Reveal>
-          <Reveal variant="fade">
-            <div className="rounded-2xl border border-border bg-surface p-8">
-              <Heading level={2} size="md">
-                Our Vision
-              </Heading>
-              <Text tone="muted" className="mt-3">
-                {vision}
-              </Text>
-            </div>
-          </Reveal>
-        </Grid>
-      </Section>
-
-      <Section>
-        <Reveal>
-          <div className="mx-auto mb-10 max-w-2xl text-center">
-            <Heading level={2} size="xl">
-              Core Values
-            </Heading>
-          </div>
-        </Reveal>
-        <FeatureGrid cols={4} items={values} />
-      </Section>
-
-      <Section glow="center">
-        <SplitLayout
-          start={
-            <Reveal>
-              <Heading level={2} size="lg">
-                Meet the Founder
-              </Heading>
-              <Heading level={3} size="sm" className="mt-4 text-primary">
-                {founder.name}
-              </Heading>
-              <Text tone="muted" className="mt-1">
-                {founder.role}
-              </Text>
-              <Text className="mt-4 max-w-xl">{founder.bio}</Text>
-            </Reveal>
-          }
-          end={
-            <Reveal variant="fade">
-              <div className="rounded-2xl border border-border bg-surface p-6">
-                <Heading level={4} size="xs" className="mb-4 uppercase tracking-wide text-muted-foreground">
-                  Knowledge & Expertise
-                </Heading>
-                <ul className="flex flex-col gap-2.5">
-                  {founder.knowledgeAreas.map((area) => (
-                    <li key={area} className="flex items-center gap-2 text-body-sm text-foreground">
-                      <span className="size-1.5 shrink-0 rounded-full bg-primary" />
-                      {area}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          }
+      <section className="wrap pb-20 pt-32 md:pb-32 md:pt-40">
+        <Headline
+          as="h1"
+          immediate
+          className="t-mega max-w-[18ch]"
+          text="A small team that builds it, launches it and [[gets it found]]."
         />
-      </Section>
+      </section>
 
-      <Section>
-        <Reveal>
-          <div className="mx-auto mb-10 max-w-2xl text-center">
-            <Heading level={2} size="xl">
-              AI-Assisted, Human-Reviewed
-            </Heading>
-            <Text tone="muted" className="mt-3">
-              {aiApproach.description}
-            </Text>
-          </div>
+      <section className="wrap grid gap-10 border-t border-line py-20 md:grid-cols-12 md:py-32">
+        <Reveal className="md:col-span-4">
+          <p className="t-small text-muted">Founder</p>
+          <p className="t-title mt-2">{founder.name}</p>
+          <p className="t-small text-muted">{founder.role}</p>
         </Reveal>
-        <Grid cols={4}>
-          {aiApproach.points.map((point) => (
-            <div key={point} className="rounded-xl border border-border bg-card p-5 text-body-sm text-foreground">
-              {point}
-            </div>
-          ))}
-        </Grid>
-      </Section>
-
-      <BackgroundHero
-        scrim="full"
-        background={
-          <ThemedImage
-            srcLight="/images/OurJourneyLightmode.png"
-            srcDark="/images/OurJourney.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover object-[62%_center]"
-          />
-        }
-      >
-        <div className="w-full">
-          <Reveal>
-            <div className="mx-auto mb-12 max-w-2xl text-center">
-              <Heading level={2} size="xl">
-                Our Journey
-              </Heading>
-            </div>
-          </Reveal>
-          <Timeline entries={timeline} />
-        </div>
-      </BackgroundHero>
-
-      <Section>
-        <Reveal>
-          <div className="mx-auto mb-8 max-w-2xl text-center">
-            <Heading level={2} size="xl">
-              Technologies We Use
-            </Heading>
-          </div>
+        <Reveal delay={0.1} className="md:col-span-7 md:col-start-6">
+          <p className="t-lead">{founder.bio}</p>
+          <ul className="mt-8 flex flex-wrap gap-2">
+            {founder.knowsAbout.map((item) => (
+              <li key={item} className="border border-line px-3 py-1 text-[0.8rem]">
+                {item}
+              </li>
+            ))}
+          </ul>
         </Reveal>
-        <div className="flex flex-wrap justify-center gap-3">
-          {technologies.map((tech) => (
-            <TechCard key={tech} name={tech} />
-          ))}
-        </div>
-      </Section>
+      </section>
 
-      <CTABanner
-        image="build"
-        heading="Let's Build Something Great Together"
-        description="Have a project in mind or need advice? We'd love to hear from you."
-        primaryLabel="Book a Consultation"
-        primaryHref="/contact"
-        secondaryLabel="View Our Work"
-        secondaryHref="/portfolio"
-      />
+      <section className="bg-ink py-20 text-paper md:py-32">
+        <div className="wrap">
+          <Headline text="How we [[work]]" className="t-display mb-12 md:mb-20" />
+          <ul className="grid gap-px bg-line-dark md:grid-cols-3">
+            {principles.map((item, i) => (
+              <Reveal as="li" key={item.title} delay={i * 0.08} className="bg-ink p-6 md:p-8">
+                <p className="t-small text-paper/50">0{i + 1}</p>
+                <p className="t-title mt-12 md:mt-24">{item.title}</p>
+                <p className="t-small mt-4 max-w-xs text-paper/70">{item.text}</p>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="border-b border-line py-8 md:py-12">
+        <Marquee className="text-[clamp(2rem,5vw,5rem)] font-medium leading-none tracking-[-0.04em]" items={stack} />
+      </section>
+
+      <section className="wrap py-28 md:py-44">
+        <Headline text="Like what you see? Let's [[talk]]." className="t-mega max-w-[14ch]" />
+        <Reveal delay={0.2} className="mt-10">
+          <Pill href="/contact">Book a discovery call</Pill>
+        </Reveal>
+      </section>
     </>
   )
 }

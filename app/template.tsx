@@ -1,17 +1,16 @@
-"use client"
-
-import { motion } from "framer-motion"
-
-import { pageTransition } from "@/lib/motion"
-
 /**
- * Next.js remounts `template.tsx` on every navigation (unlike layout.tsx),
- * which is what makes a route-level cross-fade possible here.
+ * Re-mounts on every navigation (unlike layout), which replays the curtain.
+ * Pure CSS so it lifts on its own even if JavaScript is slow to load.
  */
 export default function Template({ children }: { children: React.ReactNode }) {
   return (
-    <motion.div initial="hidden" animate="visible" variants={pageTransition}>
+    <>
+      <div aria-hidden="true" className="page-curtain">
+        <span className="text-[clamp(2rem,6vw,5rem)] font-extrabold tracking-[-0.06em]">
+          MB<span className="font-medium">core</span>X
+        </span>
+      </div>
       {children}
-    </motion.div>
+    </>
   )
 }

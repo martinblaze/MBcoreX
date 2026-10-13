@@ -1,74 +1,49 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 
-import { Section } from "@/components/layout/section"
-import { PageHero } from "@/components/sections/page-hero"
-import { Grid } from "@/components/layout/grid"
-import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { Accent } from "@/components/typography/typography"
-import { Reveal, StaggerItem } from "@/components/motion/reveal"
-import { CaseStudyCard } from "@/components/cards/case-study-card"
-import { StatsBand } from "@/components/sections/stats-band"
-import { CTABanner } from "@/components/sections/cta-banner"
+import { CaseCard } from "@/components/case-card"
+import { Pill } from "@/components/pill"
+import { Headline, Reveal } from "@/components/reveal"
+import { caseStudies } from "@/content/work"
 import { JsonLd } from "@/components/seo/json-ld"
+import { breadcrumbJsonLd, buildMetadata, itemListJsonLd, webPageJsonLd } from "@/lib/seo"
 
-import { portfolioProjects } from "@/content/portfolio"
-import { companyStats } from "@/content/stats"
-import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo"
+const title = "Case Studies: Software & Web Projects Built in Nigeria"
+const description =
+  "Software, web apps and websites we built in Nigeria: DiagSync (lab management), Batamart (student marketplace) and Reene Medical Diagnostics."
 
-export const metadata: Metadata = buildMetadata({
-  title: "Case Studies — Real Software Outcomes for Nigerian Businesses",
-  description:
-    "See real before-and-after outcomes from MB CoreX's software projects — DiagSync, Batamart and Reene Medical Diagnostics — the problem, the solution, the technology and the results.",
-  path: "/case-studies",
-})
+export const metadata: Metadata = buildMetadata({ title: `${title} | MB CoreX`, description, path: "/case-studies" })
 
 export default function CaseStudiesPage() {
   return (
     <>
+      <JsonLd data={webPageJsonLd({ name: title, description, path: "/case-studies", type: "CollectionPage" })} />
+      <JsonLd data={itemListJsonLd("MB CoreX case studies", caseStudies.map((study) => ({ name: study.title, path: `/case-studies/${study.slug}` })))} />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Case Studies", path: "/case-studies" }])} />
-
-      <PageHero
-        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Case Studies" }]} />}
-        eyebrow="Case Studies"
-        title={[
-          "Real problems.",
-          <Accent key="accent" tone="brand">Real solutions.</Accent>,
-        ]}
-        description="We don’t just build. See how we take businesses from challenges to measurable results."
-        image={{
-          srcLight: "/images/hero/hero-case-studies-light.jpg",
-          srcDark: "/images/hero/hero-case-studies-dark.jpg",
-        }}
-      />
-
-      <Section spacing="tight">
-        <StatsBand stats={companyStats} />
-      </Section>
-
-      <Section>
-        <Reveal stagger>
-          <Grid cols={2} gap="lg">
-            {portfolioProjects.map((project) => (
-              <StaggerItem key={project.slug}>
-                <Link href={`/portfolio/${project.slug}`} className="block h-full">
-                  <CaseStudyCard title={project.title} image={project.image} before={project.before} after={project.after} />
-                </Link>
-              </StaggerItem>
-            ))}
-          </Grid>
+      <section className="wrap pb-16 pt-32 md:pb-24 md:pt-40">
+        <Headline
+          as="h1"
+          immediate
+          className="t-mega max-w-[16ch]"
+          text="We tell brands' stories with [[real products]]."
+        />
+        <Reveal delay={0.4} className="mt-8 flex justify-between gap-6 border-t border-line pt-4 t-small text-muted">
+          <span>Works</span>
+          <span>{caseStudies.length} selected projects</span>
         </Reveal>
-      </Section>
+      </section>
 
-      <CTABanner
-        image="build"
-        heading="Ready to Be Our Next Case Study?"
-        description="Tell us about your business problem — we'll tell you how we'd solve it."
-        primaryLabel="Book a Consultation"
-        primaryHref="/contact"
-        secondaryLabel="View Full Portfolio"
-        secondaryHref="/portfolio"
-      />
+      <section className="wrap grid gap-x-3 gap-y-14 pb-28 md:grid-cols-2 md:pb-40">
+        {caseStudies.map((study, i) => (
+          <CaseCard key={study.slug} study={study} priority={i < 2} />
+        ))}
+      </section>
+
+      <section className="wrap pb-28 md:pb-44">
+        <Headline text="Your project could be [[next]]." className="t-display max-w-[14ch]" />
+        <Reveal delay={0.2} className="mt-10">
+          <Pill href="/contact">Start a project</Pill>
+        </Reveal>
+      </section>
     </>
   )
 }

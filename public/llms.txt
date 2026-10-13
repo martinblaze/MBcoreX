@@ -1,0 +1,18 @@
+# MB CoreX
+
+> MB CoreX is an online software company in Nigeria. It builds websites, web applications, custom software and mobile apps, and runs in-depth Google SEO for businesses in all 36 states and the Federal Capital Territory. It has no walk-in office; all work is delivered remotely. Prices are quoted in naira (NGN).
+
+## Services
+- [Web development](/services/web-development): company websites, landing pages and online stores. Typical range ₦150,000 to ₦2.5 million.
+- [Web applications](/services/web-applications): portals, dashboards, marketplaces and internal tools. Typical range ₦800,000 to ₦5 million.
+- [Custom software](/services/custom-software): bespoke systems, automation, APIs and SaaS. Typical range ₦1.5 million to ₦8 million.
+- [Mobile app development](/services/mobile-app-development): iOS and Android apps from one codebase. Typical range ₦1.5 million to ₦8 million.
+- [Google SEO](/services/google-seo): audits, technical SEO, content and link building. Typical range ₦150,000 to ₦1 million.
+
+## Key pages
+- [Pricing](/pricing): indicative naira ranges for every service.
+- [Areas we serve](/locations): pages for every Nigerian state and the FCT.
+- [Case studies](/case-studies): DiagSync (laboratory management), Batamart (student marketplace), Reene Medical Diagnostics (healthcare website).
+- [Guides](/insights): website, app, software and SEO costs in Nigeria, how to rank on Google, how to choose a software company.
+- [About](/about): founder Martin Blaze.
+- [Contact](/contact): email MBCoreX@gmail.com, phone +234 701 442 6807.
